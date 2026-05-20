@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DivideAi — Encontre Colegas de Confiança em BH</title>
+<title>DivideAi — Encontre Colegas de Quarto em BH</title>
+<meta name="description" content="Plataforma de matching de colegas de quarto com perfis verificados, pontuações de confiança e matching inteligente em BH.">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -18,35 +19,89 @@
   --font:'Plus Jakarta Sans',sans-serif;
 }
 body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:1.6;font-size:15px}
+
+/* NAV */
 nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:68px;position:sticky;top:0;z-index:100;box-shadow:0 1px 12px rgba(27,42,74,0.06)}
-.logo-img{height:36px;width:auto}
+.logo-wrap{display:flex;align-items:center;gap:0.6rem}
+.logo-img{height:40px;width:auto;display:block}
 .nav-links{display:flex;gap:2rem;list-style:none}
 .nav-links a{text-decoration:none;color:var(--muted);font-size:0.88rem;font-weight:500;transition:color 0.2s}
 .nav-links a:hover{color:var(--navy)}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.btn-nav-ghost{background:transparent;color:var(--navy);padding:0.5rem 1.1rem;border-radius:100px;font-size:0.88rem;font-weight:600;text-decoration:none;border:1.5px solid var(--border2);transition:all 0.2s}
+.btn-nav-ghost:hover{border-color:var(--navy)}
 .btn-nav{background:var(--navy);color:#fff;padding:0.55rem 1.4rem;border-radius:100px;font-size:0.88rem;font-weight:600;text-decoration:none;transition:background 0.2s}
 .btn-nav:hover{background:var(--navy2)}
-.hero{background:var(--navy);color:#fff;padding:5.5rem 2.5rem 5rem;text-align:center;position:relative;overflow:hidden}
+
+/* HERO */
+.hero{background:var(--navy);color:#fff;padding:5rem 2.5rem 4.5rem;text-align:center;position:relative;overflow:hidden}
 .hero-circle1{position:absolute;top:-100px;right:-80px;width:420px;height:420px;border-radius:50%;background:rgba(29,184,138,0.08);pointer-events:none}
 .hero-circle2{position:absolute;bottom:-120px;left:-60px;width:320px;height:320px;border-radius:50%;background:rgba(200,168,75,0.07);pointer-events:none}
-.hero-circle3{position:absolute;top:40%;left:5%;width:180px;height:180px;border-radius:50%;background:rgba(29,184,138,0.05);pointer-events:none}
-.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(29,184,138,0.15);border:1px solid rgba(29,184,138,0.3);color:#6DEBB8;padding:0.4rem 1.1rem;border-radius:100px;font-size:0.78rem;font-weight:600;margin-bottom:2rem;letter-spacing:0.04em;text-transform:uppercase}
-.hero-logo{height:56px;margin:0 auto 2rem;display:block;filter:brightness(0) invert(1)}
-.hero h1{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;line-height:1.08;margin-bottom:1.25rem;max-width:720px;margin-left:auto;margin-right:auto;letter-spacing:-0.02em}
+.hero-logo-wrap{margin:0 auto 1.75rem;display:flex;justify-content:center}
+.hero-logo{height:52px;filter:brightness(0) invert(1)}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(29,184,138,0.15);border:1px solid rgba(29,184,138,0.3);color:#6DEBB8;padding:0.4rem 1.1rem;border-radius:100px;font-size:0.78rem;font-weight:600;margin-bottom:1.75rem;letter-spacing:0.04em;text-transform:uppercase}
+.hero h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;line-height:1.08;margin-bottom:1.25rem;max-width:720px;margin-left:auto;margin-right:auto;letter-spacing:-0.02em}
 .hero h1 em{font-style:normal;color:var(--teal)}
-.hero p{color:#A8B8D0;font-size:1.05rem;max-width:520px;margin:0 auto 2.75rem;font-weight:400;line-height:1.7}
-.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.hero p{color:#A8B8D0;font-size:1.05rem;max-width:520px;margin:0 auto 2.5rem;line-height:1.7}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem}
 .btn-primary{background:var(--teal);color:#fff;padding:0.9rem 2.2rem;border-radius:100px;font-size:0.95rem;font-weight:700;border:none;cursor:pointer;transition:all 0.2s;font-family:var(--font)}
 .btn-primary:hover{background:var(--teal2);transform:translateY(-1px)}
 .btn-ghost{background:rgba(255,255,255,0.08);color:#fff;padding:0.9rem 2.2rem;border-radius:100px;font-size:0.95rem;font-weight:600;border:1px solid rgba(255,255,255,0.2);cursor:pointer;transition:all 0.2s;font-family:var(--font)}
 .btn-ghost:hover{background:rgba(255,255,255,0.14)}
+.hero-stats{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;padding-top:2.5rem;border-top:1px solid rgba(255,255,255,0.1)}
+.stat{text-align:center}
+.stat-num{font-size:1.8rem;font-weight:800;color:#fff;letter-spacing:-0.02em}
+.stat-label{font-size:0.8rem;color:#8DA0BA;margin-top:0.2rem}
+
+/* TRUST */
 .trust{background:var(--white);padding:1.25rem 2.5rem;display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;border-bottom:1px solid var(--border)}
 .trust-item{display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:var(--muted);font-weight:500}
 .trust-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);flex-shrink:0}
+
+/* SECTIONS */
 section{padding:5rem 2.5rem}
 .container{max-width:1100px;margin:0 auto}
 .section-eyebrow{font-size:0.75rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.6rem}
 .section-title{font-size:clamp(1.7rem,3vw,2.4rem);font-weight:800;margin-bottom:0.9rem;letter-spacing:-0.02em;color:var(--navy)}
 .section-sub{color:var(--muted);max-width:520px;margin-bottom:3.5rem;font-size:0.95rem;line-height:1.7}
+
+/* SEARCH BAR */
+.search-bar{background:var(--white);border-radius:var(--radius);padding:1.5rem;border:1px solid var(--border);margin-bottom:2.5rem;display:flex;gap:1rem;flex-wrap:wrap;align-items:flex-end}
+.search-group{flex:1;min-width:160px}
+.search-group label{display:block;font-size:0.75rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem}
+.search-group select,.search-group input{width:100%;padding:0.65rem 0.9rem;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:0.88rem;font-family:var(--font);background:var(--bg);color:var(--text);outline:none;transition:border-color 0.2s}
+.search-group select:focus,.search-group input:focus{border-color:var(--teal)}
+.btn-search{background:var(--navy);color:#fff;padding:0.68rem 1.5rem;border-radius:var(--radius-sm);font-size:0.9rem;font-weight:700;border:none;cursor:pointer;font-family:var(--font);white-space:nowrap;transition:background 0.2s}
+.btn-search:hover{background:var(--navy2)}
+
+/* APTS */
+.apts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem}
+.apt-card{background:var(--white);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;cursor:pointer}
+.apt-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(27,42,74,0.1)}
+.apt-img{height:200px;background:linear-gradient(135deg,#1B2A4A,#243457);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:3rem}
+.apt-img.bg1{background:linear-gradient(135deg,#1B2A4A 0%,#1DB88A 100%)}
+.apt-img.bg2{background:linear-gradient(135deg,#243457 0%,#534AB7 100%)}
+.apt-img.bg3{background:linear-gradient(135deg,#1B2A4A 0%,#D85A30 100%)}
+.apt-img.bg4{background:linear-gradient(135deg,#085041 0%,#1DB88A 100%)}
+.apt-img.bg5{background:linear-gradient(135deg,#3C3489 0%,#534AB7 100%)}
+.apt-badge{position:absolute;top:0.75rem;left:0.75rem;background:var(--teal);color:#fff;padding:0.25rem 0.7rem;border-radius:100px;font-size:0.75rem;font-weight:700}
+.apt-badge.premium{background:var(--gold)}
+.apt-price{position:absolute;bottom:0.75rem;right:0.75rem;background:rgba(0,0,0,0.6);color:#fff;padding:0.3rem 0.75rem;border-radius:100px;font-size:0.9rem;font-weight:700;backdrop-filter:blur(4px)}
+.apt-body{padding:1.25rem}
+.apt-title{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.3rem}
+.apt-loc{font-size:0.82rem;color:var(--muted);margin-bottom:0.9rem;display:flex;align-items:center;gap:0.3rem}
+.apt-features{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.apt-feat{background:var(--bg);color:var(--muted);padding:0.18rem 0.6rem;border-radius:100px;font-size:0.75rem;font-weight:500;border:1px solid var(--border)}
+.apt-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:1rem;border-top:1px solid var(--border)}
+.apt-host{display:flex;align-items:center;gap:0.5rem}
+.apt-avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:800;color:#fff}
+.apt-host-info{font-size:0.78rem}
+.apt-host-name{font-weight:600;color:var(--navy)}
+.apt-host-score{color:var(--muted)}
+.btn-ver{background:var(--navy);color:#fff;padding:0.45rem 1rem;border-radius:var(--radius-sm);font-size:0.8rem;font-weight:600;border:none;cursor:pointer;font-family:var(--font);transition:background 0.2s}
+.btn-ver:hover{background:var(--navy2)}
+
+/* STEPS */
 .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem}
 .step{background:var(--white);border-radius:var(--radius);padding:1.75rem;border:1px solid var(--border);transition:box-shadow 0.2s}
 .step:hover{box-shadow:0 6px 24px rgba(27,42,74,0.08)}
@@ -54,6 +109,8 @@ section{padding:5rem 2.5rem}
 .step-icon{width:40px;height:40px;border-radius:var(--radius-sm);background:linear-gradient(135deg,#E8FBF4,#D0F5E8);display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:0.75rem}
 .step h3{font-size:0.95rem;font-weight:700;margin-bottom:0.4rem;color:var(--navy)}
 .step p{font-size:0.85rem;color:var(--muted);line-height:1.6}
+
+/* SECURITY */
 .sec-bg{background:var(--navy)}
 .security-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem}
 .sec-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius);padding:1.5rem;transition:background 0.2s}
@@ -62,6 +119,8 @@ section{padding:5rem 2.5rem}
 .sec-card h3{color:#fff;font-size:0.95rem;font-weight:700;margin-bottom:0.4rem}
 .sec-card p{color:#8DA0BA;font-size:0.83rem;line-height:1.6}
 .pts-badge{display:inline-flex;align-items:center;gap:0.35rem;background:rgba(29,184,138,0.2);border:1px solid rgba(29,184,138,0.35);color:#6DEBB8;padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem;font-weight:700;margin-top:0.85rem}
+
+/* PROFILES */
 .profiles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.5rem}
 .profile-card{background:var(--white);border-radius:var(--radius);padding:1.5rem;border:1px solid var(--border);transition:transform 0.2s,box-shadow 0.2s;cursor:pointer}
 .profile-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(27,42,74,0.1)}
@@ -70,6 +129,9 @@ section{padding:5rem 2.5rem}
 .av1{background:linear-gradient(135deg,#1DB88A,#0d6e55)}
 .av2{background:linear-gradient(135deg,#534AB7,#3C3489)}
 .av3{background:linear-gradient(135deg,#D85A30,#993C1D)}
+.av4{background:linear-gradient(135deg,#C8A84B,#8B6914)}
+.av5{background:linear-gradient(135deg,#E91E8C,#9C1560)}
+.av6{background:linear-gradient(135deg,#0EA5E9,#0369A1)}
 .profile-info h4{font-size:0.95rem;font-weight:700;margin-bottom:0.1rem;color:var(--navy)}
 .profile-info p{font-size:0.8rem;color:var(--muted)}
 .v-badge{display:inline-flex;align-items:center;gap:0.3rem;background:#E8FBF4;color:#0d6e55;padding:0.18rem 0.6rem;border-radius:100px;font-size:0.72rem;font-weight:700;margin-top:0.3rem}
@@ -82,9 +144,11 @@ section{padding:5rem 2.5rem}
 .tag{background:var(--bg);color:var(--muted);padding:0.18rem 0.6rem;border-radius:100px;font-size:0.75rem;font-weight:500;border:1px solid var(--border)}
 .btn-match{width:100%;background:var(--navy);color:#fff;border:none;padding:0.8rem;border-radius:var(--radius-sm);font-size:0.88rem;font-weight:700;cursor:pointer;margin-top:1rem;font-family:var(--font);transition:background 0.2s}
 .btn-match:hover{background:var(--navy2)}
+
+/* FORM */
 .form-section{background:var(--white)}
-.form-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:4rem;align-items:start}
-@media(max-width:750px){.form-grid{grid-template-columns:1fr}}
+.form-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:start}
+@media(max-width:800px){.form-grid{grid-template-columns:1fr}}
 .form-info h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:1rem;letter-spacing:-0.02em}
 .form-info p{color:var(--muted);margin-bottom:1.75rem;font-size:0.92rem;line-height:1.7}
 .benefit{display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1.1rem}
@@ -93,30 +157,48 @@ section{padding:5rem 2.5rem}
 .benefit-text p{font-size:0.8rem;color:var(--muted);line-height:1.5}
 .wpp-card{margin-top:2rem;padding:1.1rem 1.25rem;background:#F0FFF8;border-radius:var(--radius);border:1px solid #B8EDD8}
 .wpp-card p{font-size:0.85rem;color:var(--teal3);font-weight:600;margin-bottom:0.6rem}
-.wpp-btn{display:inline-flex;align-items:center;gap:0.5rem;background:#25D366;color:#fff;padding:0.55rem 1.1rem;border-radius:100px;font-size:0.85rem;font-weight:600;text-decoration:none;transition:background 0.2s}
-.wpp-btn:hover{background:#1ebe5a}
+.wpp-btn{display:inline-flex;align-items:center;gap:0.5rem;background:#25D366;color:#fff;padding:0.55rem 1.1rem;border-radius:100px;font-size:0.85rem;font-weight:600;text-decoration:none}
 .form-box{background:var(--bg);border-radius:var(--radius);padding:2.25rem;border:1px solid var(--border)}
-.form-box h3{font-size:1.05rem;font-weight:800;margin-bottom:1.75rem;color:var(--navy)}
-.fg{margin-bottom:1.2rem}
+.form-box h3{font-size:1.05rem;font-weight:800;margin-bottom:0.4rem;color:var(--navy)}
+.form-box .form-sub{font-size:0.82rem;color:var(--muted);margin-bottom:1.75rem}
+.form-section-title{font-size:0.78rem;font-weight:800;color:var(--teal3);text-transform:uppercase;letter-spacing:0.08em;margin:1.5rem 0 1rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border)}
+.fg{margin-bottom:1.1rem}
 label{display:block;font-size:0.78rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;letter-spacing:0.02em;text-transform:uppercase}
 input,select,textarea{width:100%;padding:0.72rem 1rem;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:0.9rem;font-family:var(--font);background:var(--white);color:var(--text);transition:border-color 0.2s;outline:none}
 input:focus,select:focus,textarea:focus{border-color:var(--teal)}
 textarea{resize:vertical;min-height:80px}
 .frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.frow3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+.checkbox-group{display:flex;flex-direction:column;gap:0.5rem}
+.checkbox-item{display:flex;align-items:center;gap:0.5rem;cursor:pointer}
+.checkbox-item input[type=checkbox]{width:auto;padding:0;accent-color:var(--teal)}
+.checkbox-item span{font-size:0.85rem;color:var(--text);font-weight:400;text-transform:none;letter-spacing:0}
+.radio-group{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem}
+.radio-item{display:flex;align-items:center;gap:0.5rem;cursor:pointer;background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:0.6rem 0.8rem;transition:border-color 0.2s}
+.radio-item:has(input:checked){border-color:var(--teal);background:#F0FFF8}
+.radio-item input[type=radio]{width:auto;padding:0;accent-color:var(--teal)}
+.radio-item span{font-size:0.83rem;color:var(--text);font-weight:500;text-transform:none;letter-spacing:0}
 .upload-box{border:2px dashed var(--border2);border-radius:var(--radius-sm);padding:1.4rem;text-align:center;cursor:pointer;transition:border-color 0.2s,background 0.2s;background:var(--white)}
 .upload-box:hover{border-color:var(--teal);background:#F0FFF8}
-.upload-box .icon{font-size:1.4rem;margin-bottom:0.3rem}
+.upload-icon{font-size:1.4rem;margin-bottom:0.3rem}
 .upload-box p{font-size:0.8rem;color:var(--muted)}
-.btn-submit{width:100%;background:linear-gradient(135deg,#1DB88A,#17A07A);color:#fff;border:none;padding:1rem;border-radius:var(--radius-sm);font-size:0.95rem;font-weight:800;cursor:pointer;font-family:var(--font);transition:opacity 0.2s;margin-top:0.5rem}
+.btn-submit{width:100%;background:linear-gradient(135deg,#1DB88A,#17A07A);color:#fff;border:none;padding:1rem;border-radius:var(--radius-sm);font-size:0.95rem;font-weight:800;cursor:pointer;font-family:var(--font);transition:opacity 0.2s;margin-top:1rem}
 .btn-submit:hover{opacity:0.9}
 .btn-submit:disabled{opacity:0.5;cursor:not-allowed}
 .priv{font-size:0.75rem;color:var(--light);text-align:center;margin-top:0.75rem}
+.score-preview{background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:var(--radius);padding:1rem 1.25rem;margin-top:1rem;display:flex;align-items:center;gap:1rem}
+.score-preview-num{font-size:2rem;font-weight:800;color:#fff;line-height:1}
+.score-preview-info h4{color:#fff;font-size:0.85rem;font-weight:700;margin-bottom:0.2rem}
+.score-preview-info p{color:#8DA0BA;font-size:0.78rem;line-height:1.5}
+
+/* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(10,15,30,0.6);z-index:200;display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity 0.25s}
 .modal-overlay.show{opacity:1;pointer-events:all}
-.modal{background:var(--white);border-radius:var(--radius);padding:2rem;max-width:490px;width:100%;position:relative;max-height:90vh;overflow-y:auto;transform:translateY(24px);transition:transform 0.25s}
+.modal{background:var(--white);border-radius:var(--radius);padding:2rem;max-width:520px;width:100%;position:relative;max-height:90vh;overflow-y:auto;transform:translateY(24px);transition:transform 0.25s}
 .modal-overlay.show .modal{transform:translateY(0)}
 .modal-close{position:absolute;top:1rem;right:1rem;background:var(--bg);border:none;cursor:pointer;font-size:1rem;color:var(--muted);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center}
 .m-avatar{width:68px;height:68px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.2rem;color:#fff;margin-bottom:1rem}
+.m-apt-img{height:160px;border-radius:var(--radius-sm);margin-bottom:1.25rem;display:flex;align-items:center;justify-content:center;font-size:2.5rem;position:relative;overflow:hidden}
 .m-score{background:var(--bg);border-radius:var(--radius);padding:1.1rem;margin:1rem 0;border:1px solid var(--border)}
 .score-big{font-size:2.8rem;font-weight:800;color:var(--navy);line-height:1;letter-spacing:-0.03em}
 .score-desc{font-size:0.78rem;color:var(--muted);margin-top:0.2rem}
@@ -128,171 +210,516 @@ textarea{resize:vertical;min-height:80px}
 .c-btn:hover{background:var(--bg)}
 .c-btn.wpp{background:#25D366;color:#fff;border-color:#25D366}
 .c-btn.wpp:hover{background:#1ebe5a}
-footer{background:var(--navy);color:#8DA0BA;padding:3rem 2.5rem;text-align:center}
-.footer-logo{height:32px;filter:brightness(0) invert(1);margin-bottom:1rem}
-footer p{font-size:0.83rem;line-height:1.8}
+.apt-detail-row{display:flex;justify-content:space-between;padding:0.6rem 0;border-bottom:1px solid var(--border);font-size:0.85rem}
+.apt-detail-row:last-child{border-bottom:none}
+.apt-detail-label{color:var(--muted)}
+.apt-detail-val{font-weight:600;color:var(--navy)}
+
+/* FOOTER */
+footer{background:var(--navy);color:#8DA0BA;padding:3rem 2.5rem}
+.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem}
+@media(max-width:700px){.footer-inner{grid-template-columns:1fr}}
+.footer-logo{height:36px;filter:brightness(0) invert(1);margin-bottom:1rem;display:block}
+.footer-desc{font-size:0.83rem;line-height:1.7;color:#8DA0BA}
+.footer-col h4{font-size:0.82rem;font-weight:700;color:#fff;margin-bottom:1rem;text-transform:uppercase;letter-spacing:0.08em}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem}
+.footer-col ul li a{font-size:0.83rem;color:#8DA0BA;text-decoration:none;transition:color 0.2s}
+.footer-col ul li a:hover{color:#fff}
+.footer-bottom{max-width:1100px;margin:2rem auto 0;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{font-size:0.78rem;color:#6B7594}
+
 .wpp-float{position:fixed;bottom:1.5rem;right:1.5rem;background:#25D366;color:#fff;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 4px 20px rgba(0,0,0,0.2);cursor:pointer;z-index:99;text-decoration:none;transition:transform 0.2s}
 .wpp-float:hover{transform:scale(1.1)}
 .toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--navy);color:#fff;padding:0.8rem 1.75rem;border-radius:100px;font-size:0.88rem;z-index:300;transition:transform 0.3s;white-space:nowrap;max-width:90vw;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.2)}
 .toast.show{transform:translateX(-50%) translateY(0)}
+
+@media(max-width:600px){
+  nav{padding:0 1rem}
+  .nav-links{display:none}
+  .btn-nav-ghost{display:none}
+  section{padding:3rem 1.25rem}
+  .hero{padding:3.5rem 1.25rem 3rem}
+  .trust{gap:1.25rem;padding:1rem}
+  .frow,.frow3{grid-template-columns:1fr}
+  .radio-group{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <img src="logo.png" class="logo-img" alt="DivideAi">
+  <div class="logo-wrap">
+    <img src="logo.png" class="logo-img" alt="DivideAi">
+  </div>
   <ul class="nav-links">
+    <li><a href="#apartamentos">Apartamentos</a></li>
     <li><a href="#como-funciona">Como funciona</a></li>
     <li><a href="#seguranca">Segurança</a></li>
-    <li><a href="#perfis">Perfis</a></li>
+    <li><a href="#perfis">Colegas</a></li>
     <li><a href="#cadastro">Cadastrar</a></li>
   </ul>
-  <a href="#cadastro" class="btn-nav">Cadastrar grátis</a>
+  <div class="nav-right">
+    <a href="#perfis" class="btn-nav-ghost">Entrar</a>
+    <a href="#cadastro" class="btn-nav">Cadastrar grátis</a>
+  </div>
 </nav>
 
 <div class="hero">
   <div class="hero-circle1"></div>
   <div class="hero-circle2"></div>
-  <div class="hero-circle3"></div>
-  <img src="logo.png" class="hero-logo" alt="DivideAi">
+  <div class="hero-logo-wrap">
+    <img src="logo.png" class="hero-logo" alt="DivideAi">
+  </div>
   <div class="hero-badge">🏠 Plataforma de moradia compartilhada em BH</div>
   <h1>Encontre seu colega de quarto <em>ideal e seguro</em></h1>
   <p>Matching inteligente com perfis verificados, pontuação de confiança e avaliações reais. Dividir fica mais fácil quando você confia em quem divide.</p>
   <div class="hero-btns">
     <button class="btn-primary" onclick="goTo('cadastro')">Quero me cadastrar grátis</button>
-    <button class="btn-ghost" onclick="goTo('perfis')">Ver perfis disponíveis</button>
+    <button class="btn-ghost" onclick="goTo('apartamentos')">Ver apartamentos</button>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">120+</div><div class="stat-label">Usuários verificados</div></div>
+    <div class="stat"><div class="stat-num">48</div><div class="stat-label">Apartamentos disponíveis</div></div>
+    <div class="stat"><div class="stat-num">4.9★</div><div class="stat-label">Avaliação média</div></div>
+    <div class="stat"><div class="stat-num">R$0</div><div class="stat-label">Taxa de cadastro</div></div>
   </div>
 </div>
 
 <div class="trust">
-  <div class="trust-item"><div class="trust-dot"></div>Verificação de CPF</div>
+  <div class="trust-item"><div class="trust-dot"></div>CPF verificado</div>
   <div class="trust-item"><div class="trust-dot"></div>Documento + Selfie</div>
   <div class="trust-item"><div class="trust-dot"></div>Score de Confiança</div>
-  <div class="trust-item"><div class="trust-dot"></div>Avaliações entre usuários</div>
+  <div class="trust-item"><div class="trust-dot"></div>Avaliações reais</div>
   <div class="trust-item"><div class="trust-dot"></div>Foco em BH</div>
+  <div class="trust-item"><div class="trust-dot"></div>100% gratuito</div>
 </div>
 
-<section id="como-funciona" style="background:var(--bg)">
+<!-- APARTAMENTOS -->
+<section id="apartamentos" style="background:var(--bg)">
+  <div class="container">
+    <div class="section-eyebrow">Disponíveis agora</div>
+    <h2 class="section-title">Apartamentos para dividir em BH</h2>
+    <p class="section-sub">Imóveis com fotos reais, valores transparentes e proprietários verificados.</p>
+
+    <div class="search-bar">
+      <div class="search-group">
+        <label>Bairro</label>
+        <select id="filtBairro">
+          <option value="">Todos os bairros</option>
+          <option>Savassi</option><option>Funcionários</option><option>Lourdes</option>
+          <option>Pampulha</option><option>Buritis</option><option>Santa Efigênia</option>
+          <option>Sion</option><option>Belvedere</option><option>Serra</option>
+          <option>Mangabeiras</option><option>Santa Lúcia</option><option>Anchieta</option>
+        </select>
+      </div>
+      <div class="search-group">
+        <label>Faixa de preço</label>
+        <select id="filtPreco">
+          <option value="">Qualquer valor</option>
+          <option>Até R$ 500</option>
+          <option>R$ 500 – R$ 800</option>
+          <option>R$ 800 – R$ 1.100</option>
+          <option>R$ 1.100 – R$ 1.500</option>
+          <option>Acima de R$ 1.500</option>
+        </select>
+      </div>
+      <div class="search-group">
+        <label>Quartos</label>
+        <select id="filtQuartos">
+          <option value="">Qualquer</option>
+          <option>1 quarto</option><option>2 quartos</option><option>3+ quartos</option>
+        </select>
+      </div>
+      <button class="btn-search" onclick="showToast('🔍 Filtros aplicados!')">Buscar</button>
+    </div>
+
+    <div class="apts-grid">
+      <div class="apt-card" onclick="openApt('apt1')">
+        <div class="apt-img bg1">🏢<div class="apt-badge">Novo</div><div class="apt-price">R$ 750/mês</div></div>
+        <div class="apt-body">
+          <div class="apt-title">Apto 3 quartos — Savassi</div>
+          <div class="apt-loc">📍 Rua Pernambuco, Savassi · 85m²</div>
+          <div class="apt-features">
+            <span class="apt-feat">Mobiliado</span><span class="apt-feat">Wi-Fi</span>
+            <span class="apt-feat">Academia</span><span class="apt-feat">Garagem</span>
+          </div>
+          <div class="apt-bottom">
+            <div class="apt-host">
+              <div class="apt-avatar av1">MR</div>
+              <div class="apt-host-info">
+                <div class="apt-host-name">Marcos R.</div>
+                <div class="apt-host-score">Score 91 · ★4.9</div>
+              </div>
+            </div>
+            <button class="btn-ver">Ver detalhes</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="apt-card" onclick="openApt('apt2')">
+        <div class="apt-img bg2">🏠<div class="apt-badge premium">Premium</div><div class="apt-price">R$ 1.200/mês</div></div>
+        <div class="apt-body">
+          <div class="apt-title">Cobertura duplex — Lourdes</div>
+          <div class="apt-loc">📍 Av. do Contorno, Lourdes · 140m²</div>
+          <div class="apt-features">
+            <span class="apt-feat">Piscina</span><span class="apt-feat">Varanda</span>
+            <span class="apt-feat">2 vagas</span><span class="apt-feat">Portaria 24h</span>
+          </div>
+          <div class="apt-bottom">
+            <div class="apt-host">
+              <div class="apt-avatar av2">LC</div>
+              <div class="apt-host-info">
+                <div class="apt-host-name">Letícia C.</div>
+                <div class="apt-host-score">Score 95 · ★5.0</div>
+              </div>
+            </div>
+            <button class="btn-ver">Ver detalhes</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="apt-card" onclick="openApt('apt3')">
+        <div class="apt-img bg3">🏘️<div class="apt-badge">Popular</div><div class="apt-price">R$ 480/mês</div></div>
+        <div class="apt-body">
+          <div class="apt-title">Quarto em casa — Pampulha</div>
+          <div class="apt-loc">📍 Próx. UFMG, Pampulha · 12m² (quarto)</div>
+          <div class="apt-features">
+            <span class="apt-feat">Wi-Fi</span><span class="apt-feat">Área de serviço</span>
+            <span class="apt-feat">Quintal</span>
+          </div>
+          <div class="apt-bottom">
+            <div class="apt-host">
+              <div class="apt-avatar av3">RS</div>
+              <div class="apt-host-info">
+                <div class="apt-host-name">Rafael S.</div>
+                <div class="apt-host-score">Score 78 · ★4.6</div>
+              </div>
+            </div>
+            <button class="btn-ver">Ver detalhes</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="apt-card" onclick="openApt('apt4')">
+        <div class="apt-img bg4">🏗️<div class="apt-badge">Novo</div><div class="apt-price">R$ 890/mês</div></div>
+        <div class="apt-body">
+          <div class="apt-title">Apto 2 quartos — Buritis</div>
+          <div class="apt-loc">📍 Rua Jequitibá, Buritis · 72m²</div>
+          <div class="apt-features">
+            <span class="apt-feat">Semi-mobiliado</span><span class="apt-feat">Sacada</span>
+            <span class="apt-feat">Condomínio fechado</span>
+          </div>
+          <div class="apt-bottom">
+            <div class="apt-host">
+              <div class="apt-avatar av4">FC</div>
+              <div class="apt-host-info">
+                <div class="apt-host-name">Fernanda C.</div>
+                <div class="apt-host-score">Score 88 · ★4.8</div>
+              </div>
+            </div>
+            <button class="btn-ver">Ver detalhes</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="apt-card" onclick="openApt('apt5')">
+        <div class="apt-img bg5">🏛️<div class="apt-badge">Destaque</div><div class="apt-price">R$ 650/mês</div></div>
+        <div class="apt-body">
+          <div class="apt-title">Flat mobiliado — Funcionários</div>
+          <div class="apt-loc">📍 Rua Fernandes Tourinho, Funcionários · 55m²</div>
+          <div class="apt-features">
+            <span class="apt-feat">Totalmente mobiliado</span><span class="apt-feat">Wi-Fi</span>
+            <span class="apt-feat">Pet friendly</span>
+          </div>
+          <div class="apt-bottom">
+            <div class="apt-host">
+              <div class="apt-avatar av5">BM</div>
+              <div class="apt-host-info">
+                <div class="apt-host-name">Beatriz M.</div>
+                <div class="apt-host-score">Score 93 · ★4.9</div>
+              </div>
+            </div>
+            <button class="btn-ver">Ver detalhes</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="apt-card" onclick="openApt('apt6')">
+        <div class="apt-img bg1">🏢<div class="apt-price">R$ 560/mês</div></div>
+        <div class="apt-body">
+          <div class="apt-title">Apto 3 quartos — Santa Efigênia</div>
+          <div class="apt-loc">📍 Av. Bias Fortes, Santa Efigênia · 90m²</div>
+          <div class="apt-features">
+            <span class="apt-feat">Perto do metrô</span><span class="apt-feat">Wi-Fi</span>
+            <span class="apt-feat">2 banheiros</span>
+          </div>
+          <div class="apt-bottom">
+            <div class="apt-host">
+              <div class="apt-avatar av6">GO</div>
+              <div class="apt-host-info">
+                <div class="apt-host-name">Gabriel O.</div>
+                <div class="apt-host-score">Score 82 · ★4.7</div>
+              </div>
+            </div>
+            <button class="btn-ver">Ver detalhes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section id="como-funciona">
   <div class="container">
     <div class="section-eyebrow">Simples e seguro</div>
     <h2 class="section-title">Como funciona a DivideAi</h2>
     <p class="section-sub">Em poucos passos você encontra o parceiro ideal para dividir aluguel em Belo Horizonte.</p>
     <div class="steps">
       <div class="step"><div class="step-icon">👤</div><div class="step-num">01</div><h3>Crie seu perfil</h3><p>Preencha suas preferências de moradia, rotina e personalidade. Quanto mais completo, melhor o matching.</p></div>
-      <div class="step"><div class="step-icon">🪪</div><div class="step-num">02</div><h3>Verifique sua identidade</h3><p>Envie seu documento e uma selfie. Nossa equipe valida manualmente e você recebe o selo verificado.</p></div>
-      <div class="step"><div class="step-icon">🔍</div><div class="step-num">03</div><h3>Conheça os matches</h3><p>Veja perfis compatíveis com score de confiança e avaliações de quem já morou com eles.</p></div>
-      <div class="step"><div class="step-icon">💬</div><div class="step-num">04</div><h3>Conecte e combine</h3><p>Entre em contato pelo WhatsApp, marque uma conversa e decida com segurança se é a pessoa certa.</p></div>
+      <div class="step"><div class="step-icon">🪪</div><div class="step-num">02</div><h3>Verifique sua identidade</h3><p>Envie seu documento e selfie. Nossa equipe valida manualmente e você recebe o selo verificado em até 24h.</p></div>
+      <div class="step"><div class="step-icon">🔍</div><div class="step-num">03</div><h3>Explore e filtre</h3><p>Veja apartamentos e colegas por bairro, faixa de preço, estilo de vida e score de confiança.</p></div>
+      <div class="step"><div class="step-icon">💬</div><div class="step-num">04</div><h3>Conecte e combine</h3><p>Entre em contato pelo WhatsApp, marque uma conversa e decida com segurança quem é a pessoa certa.</p></div>
     </div>
   </div>
 </section>
 
+<!-- SEGURANÇA -->
 <section id="seguranca" class="sec-bg">
   <div class="container">
     <div class="section-eyebrow" style="color:#6DEBB8">Sistema de Segurança</div>
     <h2 class="section-title" style="color:#fff">A confiança que você merece</h2>
     <p class="section-sub" style="color:#8DA0BA">Nosso sistema de verificação em camadas garante que você sabe com quem está dividindo antes de assinar qualquer contrato.</p>
     <div class="security-grid">
-      <div class="sec-card"><div class="sec-icon">🪪</div><h3>Verificação de CPF</h3><p>Confirmamos que o CPF informado é válido e pertence à pessoa cadastrada, evitando perfis falsos.</p><div class="pts-badge">+20 pontos no score</div></div>
-      <div class="sec-card"><div class="sec-icon">🤳</div><h3>Selfie + Documento</h3><p>O usuário envia foto do RG ou CNH ao lado do rosto. Nossa equipe valida manualmente em até 24h.</p><div class="pts-badge">+30 pontos no score</div></div>
+      <div class="sec-card"><div class="sec-icon">🪪</div><h3>Verificação de CPF</h3><p>Confirmamos que o CPF é válido e pertence à pessoa cadastrada, eliminando perfis falsos.</p><div class="pts-badge">+20 pontos no score</div></div>
+      <div class="sec-card"><div class="sec-icon">🤳</div><h3>Selfie + Documento</h3><p>Foto do RG ou CNH ao lado do rosto. Nossa equipe valida manualmente em até 24h.</p><div class="pts-badge">+30 pontos no score</div></div>
       <div class="sec-card"><div class="sec-icon">⭐</div><h3>Score de Confiança</h3><p>Pontuação de 0 a 100 calculada com verificações, tempo na plataforma e avaliações recebidas.</p><div class="pts-badge">Atualizado em tempo real</div></div>
-      <div class="sec-card"><div class="sec-icon">💬</div><h3>Avaliações entre usuários</h3><p>Após cada experiência, usuários avaliam uns aos outros com estrelas e comentários verificados.</p><div class="pts-badge">+10 pontos por avaliação 5★</div></div>
+      <div class="sec-card"><div class="sec-icon">💬</div><h3>Avaliações verificadas</h3><p>Após cada experiência, usuários avaliam uns aos outros com estrelas e comentários reais.</p><div class="pts-badge">+10 pontos por avaliação 5★</div></div>
     </div>
   </div>
 </section>
 
+<!-- PERFIS -->
 <section id="perfis" style="background:var(--bg)">
   <div class="container">
-    <div class="section-eyebrow">Disponíveis agora</div>
-    <h2 class="section-title">Perfis verificados em BH</h2>
-    <p class="section-sub">Pessoas reais, verificadas e prontas para dividir. Clique para ver detalhes e entrar em contato.</p>
+    <div class="section-eyebrow">Colegas disponíveis</div>
+    <h2 class="section-title">Pessoas verificadas em BH</h2>
+    <p class="section-sub">Perfis reais, verificados e prontos para dividir. Clique para ver detalhes e entrar em contato.</p>
     <div class="profiles-grid">
       <div class="profile-card" onclick="openModal('ana')">
-        <div class="profile-top"><div class="avatar av1">AN</div><div class="profile-info"><h4>Ana Lima</h4><p>Estudante de Direito · 22 anos</p><div class="v-badge">✓ Verificada</div></div></div>
+        <div class="profile-top"><div class="avatar av1">AN</div><div class="profile-info"><h4>Ana Lima</h4><p>Direito · FDC · 22 anos</p><div class="v-badge">✓ Verificada</div></div></div>
         <div class="pscore"><div class="score-row"><span style="color:var(--muted);font-size:0.82rem">Score de Confiança</span><span style="font-weight:700;color:var(--navy);font-size:0.82rem">87/100</span></div><div class="score-bar"><div class="score-fill" style="width:87%"></div></div></div>
         <div class="stars">★★★★★ <span style="color:var(--muted);font-size:0.78rem">(4 avaliações)</span></div>
-        <div class="tags"><span class="tag">Savassi</span><span class="tag">Não fumante</span><span class="tag">Pets ok</span><span class="tag">Home office</span></div>
-        <button class="btn-match">Ver perfil completo →</button>
+        <div class="tags"><span class="tag">Savassi</span><span class="tag">Até R$900</span><span class="tag">Não fumante</span><span class="tag">Pets ok</span></div>
+        <button class="btn-match">Ver perfil →</button>
       </div>
       <div class="profile-card" onclick="openModal('carlos')">
         <div class="profile-top"><div class="avatar av2">CM</div><div class="profile-info"><h4>Carlos Melo</h4><p>Dev de Software · 25 anos</p><div class="v-badge">✓ Verificado</div></div></div>
         <div class="pscore"><div class="score-row"><span style="color:var(--muted);font-size:0.82rem">Score de Confiança</span><span style="font-weight:700;color:var(--navy);font-size:0.82rem">92/100</span></div><div class="score-bar"><div class="score-fill" style="width:92%"></div></div></div>
         <div class="stars">★★★★★ <span style="color:var(--muted);font-size:0.78rem">(7 avaliações)</span></div>
-        <div class="tags"><span class="tag">Funcionários</span><span class="tag">Silencioso</span><span class="tag">Organizado</span><span class="tag">Vegano</span></div>
-        <button class="btn-match">Ver perfil completo →</button>
+        <div class="tags"><span class="tag">Funcionários</span><span class="tag">R$800–1.100</span><span class="tag">Silencioso</span><span class="tag">Vegano</span></div>
+        <button class="btn-match">Ver perfil →</button>
       </div>
       <div class="profile-card" onclick="openModal('julia')">
         <div class="profile-top"><div class="avatar av3">JS</div><div class="profile-info"><h4>Júlia Santos</h4><p>Nutrição · UFMG · 20 anos</p><div class="v-badge">✓ Verificada</div></div></div>
         <div class="pscore"><div class="score-row"><span style="color:var(--muted);font-size:0.82rem">Score de Confiança</span><span style="font-weight:700;color:var(--navy);font-size:0.82rem">74/100</span></div><div class="score-bar"><div class="score-fill" style="width:74%"></div></div></div>
         <div class="stars">★★★★☆ <span style="color:var(--muted);font-size:0.78rem">(2 avaliações)</span></div>
-        <div class="tags"><span class="tag">Pampulha</span><span class="tag">Estudante</span><span class="tag">Cozinha muito</span></div>
-        <button class="btn-match">Ver perfil completo →</button>
+        <div class="tags"><span class="tag">Pampulha</span><span class="tag">Até R$600</span><span class="tag">Estudante</span></div>
+        <button class="btn-match">Ver perfil →</button>
+      </div>
+      <div class="profile-card" onclick="openModal('pedro')">
+        <div class="profile-top"><div class="avatar av4">PO</div><div class="profile-info"><h4>Pedro Oliveira</h4><p>Engenharia · UFMG · 23 anos</p><div class="v-badge">✓ Verificado</div></div></div>
+        <div class="pscore"><div class="score-row"><span style="color:var(--muted);font-size:0.82rem">Score de Confiança</span><span style="font-weight:700;color:var(--navy);font-size:0.82rem">80/100</span></div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div>
+        <div class="stars">★★★★★ <span style="color:var(--muted);font-size:0.78rem">(3 avaliações)</span></div>
+        <div class="tags"><span class="tag">Buritis</span><span class="tag">R$700–900</span><span class="tag">Esportista</span><span class="tag">Organizado</span></div>
+        <button class="btn-match">Ver perfil →</button>
+      </div>
+      <div class="profile-card" onclick="openModal('marina')">
+        <div class="profile-top"><div class="avatar av5">MF</div><div class="profile-info"><h4>Marina Ferreira</h4><p>Medicina · UFMG · 24 anos</p><div class="v-badge">✓ Verificada</div></div></div>
+        <div class="pscore"><div class="score-row"><span style="color:var(--muted);font-size:0.82rem">Score de Confiança</span><span style="font-weight:700;color:var(--navy);font-size:0.82rem">96/100</span></div><div class="score-bar"><div class="score-fill" style="width:96%"></div></div></div>
+        <div class="stars">★★★★★ <span style="color:var(--muted);font-size:0.78rem">(9 avaliações)</span></div>
+        <div class="tags"><span class="tag">Sion</span><span class="tag">R$1.000–1.300</span><span class="tag">Tranquila</span><span class="tag">Sem pets</span></div>
+        <button class="btn-match">Ver perfil →</button>
+      </div>
+      <div class="profile-card" onclick="openModal('gabriel')">
+        <div class="profile-top"><div class="avatar av6">GA</div><div class="profile-info"><h4>Gabriel Alves</h4><p>Administração · PUC · 21 anos</p><div class="v-badge">✓ Verificado</div></div></div>
+        <div class="pscore"><div class="score-row"><span style="color:var(--muted);font-size:0.82rem">Score de Confiança</span><span style="font-weight:700;color:var(--navy);font-size:0.82rem">68/100</span></div><div class="score-bar"><div class="score-fill" style="width:68%"></div></div></div>
+        <div class="stars">★★★★☆ <span style="color:var(--muted);font-size:0.78rem">(1 avaliação)</span></div>
+        <div class="tags"><span class="tag">Serra</span><span class="tag">R$600–800</span><span class="tag">Sociável</span></div>
+        <button class="btn-match">Ver perfil →</button>
       </div>
     </div>
   </div>
 </section>
 
+<!-- CADASTRO -->
 <section id="cadastro" class="form-section">
   <div class="container">
     <div class="form-grid">
       <div class="form-info">
         <div class="section-eyebrow">Junte-se agora</div>
         <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:1rem;letter-spacing:-0.02em">Comece sua busca com segurança</h2>
-        <p style="color:var(--muted);font-size:0.92rem;line-height:1.7;margin-bottom:1.75rem">Crie seu perfil gratuitamente e tenha acesso a pessoas verificadas buscando dividir aluguel em BH.</p>
-        <div class="benefit"><div class="benefit-icon">🎓</div><div class="benefit-text"><h4>Ideal para estudantes</h4><p>Perfeito para quem veio estudar em BH e precisa de moradia de confiança.</p></div></div>
-        <div class="benefit"><div class="benefit-icon">💼</div><div class="benefit-text"><h4>E para profissionais</h4><p>Profissionais que querem dividir sem abrir mão da qualidade de vida.</p></div></div>
-        <div class="benefit"><div class="benefit-icon">🔒</div><div class="benefit-text"><h4>Seus dados protegidos</h4><p>Seus documentos são usados apenas para verificação e nunca compartilhados.</p></div></div>
+        <p style="color:var(--muted);font-size:0.92rem;line-height:1.7;margin-bottom:1.75rem">Crie seu perfil gratuitamente e tenha acesso a pessoas e apartamentos verificados em BH.</p>
+        <div class="benefit"><div class="benefit-icon">🎓</div><div class="benefit-text"><h4>Ideal para estudantes</h4><p>Perfeito para quem veio estudar em BH e precisa de moradia de confiança perto da faculdade.</p></div></div>
+        <div class="benefit"><div class="benefit-icon">💼</div><div class="benefit-text"><h4>E para profissionais</h4><p>Profissionais que querem dividir sem abrir mão da qualidade de vida e segurança.</p></div></div>
+        <div class="benefit"><div class="benefit-icon">🔒</div><div class="benefit-text"><h4>Seus dados protegidos</h4><p>Documentos usados apenas para verificação e nunca compartilhados com terceiros.</p></div></div>
+        <div class="benefit"><div class="benefit-icon">⚡</div><div class="benefit-text"><h4>Resposta em até 24h</h4><p>Nossa equipe valida seu perfil rapidamente para você começar a dividir logo.</p></div></div>
         <div class="wpp-card">
           <p>💬 Prefere falar antes de se cadastrar?</p>
           <a href="https://wa.me/5538999136306?text=Olá!%20Vi%20a%20DivideAi%20e%20gostaria%20de%20saber%20mais." target="_blank" class="wpp-btn">Chamar no WhatsApp →</a>
         </div>
       </div>
+
       <div>
         <form class="form-box" id="cadastroForm" onsubmit="handleSubmit(event)">
           <h3>Criar meu perfil gratuito</h3>
+          <p class="form-sub">Preencha com cuidado — perfis completos têm 3x mais matches!</p>
+
+          <div class="form-section-title">📋 Dados pessoais</div>
           <div class="frow">
-            <div class="fg"><label>Nome completo</label><input type="text" name="nome" placeholder="Seu nome" required></div>
+            <div class="fg"><label>Nome completo</label><input type="text" name="nome" placeholder="Seu nome completo" required></div>
             <div class="fg"><label>Idade</label><input type="number" name="idade" placeholder="22" min="18" max="60" required></div>
           </div>
           <div class="frow">
             <div class="fg"><label>E-mail</label><input type="email" name="email" placeholder="seu@email.com" required></div>
-            <div class="fg"><label>WhatsApp</label><input type="tel" name="whatsapp" placeholder="(38) 9 9991-3630" required></div>
+            <div class="fg"><label>WhatsApp</label><input type="tel" name="whatsapp" placeholder="(38) 9 9913-6306" required></div>
           </div>
-          <div class="fg"><label>CPF</label><input type="text" name="cpf" id="cpfInput" placeholder="000.000.000-00" maxlength="14" oninput="maskCPF(this)" required></div>
+          <div class="frow">
+            <div class="fg"><label>CPF</label><input type="text" name="cpf" id="cpfInput" placeholder="000.000.000-00" maxlength="14" oninput="maskCPF(this)" required></div>
+            <div class="fg"><label>Profissão / Curso</label><input type="text" name="profissao" placeholder="Ex: Administração – FDC" required></div>
+          </div>
+
+          <div class="form-section-title">🏠 Preferências de moradia</div>
           <div class="fg">
-            <label>Bairro de preferência em BH</label>
+            <label>Bairros de preferência em BH</label>
             <select name="bairro" required>
+              <option value="">Selecione o bairro ideal</option>
+              <optgroup label="Zona Sul">
+                <option>Savassi</option><option>Funcionários</option><option>Lourdes</option>
+                <option>Sion</option><option>Belvedere</option><option>Mangabeiras</option>
+                <option>Santa Lúcia</option><option>Anchieta</option><option>Serra</option>
+              </optgroup>
+              <optgroup label="Zona Oeste">
+                <option>Buritis</option><option>Estoril</option><option>Gutierrez</option>
+                <option>Calafate</option><option>Gameleira</option>
+              </optgroup>
+              <optgroup label="Região Central">
+                <option>Santa Efigênia</option><option>Centro</option><option>Floresta</option>
+                <option>Santa Tereza</option><option>Barro Preto</option>
+              </optgroup>
+              <optgroup label="Pampulha / Norte">
+                <option>Pampulha</option><option>Caiçara</option><option>Jardim América</option>
+                <option>Castelo</option>
+              </optgroup>
+              <option>Outro bairro</option>
+            </select>
+          </div>
+          <div class="frow">
+            <div class="fg">
+              <label>Valor máximo de aluguel (sua parte)</label>
+              <div style="position:relative">
+                <span style="position:absolute;left:0.9rem;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:600;font-size:0.9rem">R$</span>
+                <input type="number" name="aluguel_max" placeholder="Ex: 800" min="100" max="10000" style="padding-left:2.5rem" required>
+              </div>
+            </div>
+            <div class="fg">
+              <label>Valor ideal (se possível)</label>
+              <div style="position:relative">
+                <span style="position:absolute;left:0.9rem;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:600;font-size:0.9rem">R$</span>
+                <input type="number" name="aluguel_ideal" placeholder="Ex: 650" min="100" max="10000" style="padding-left:2.5rem">
+              </div>
+            </div>
+          </div>
+          <div class="fg">
+            <label>Tipo de imóvel desejado</label>
+            <select name="tipo_imovel">
               <option value="">Selecione...</option>
-              <option>Savassi</option><option>Funcionários</option><option>Pampulha</option>
-              <option>Santa Efigênia</option><option>Lourdes</option><option>Buritis</option><option>Outro bairro</option>
+              <option>Apartamento (quarto próprio)</option>
+              <option>Casa (quarto próprio)</option>
+              <option>Quarto compartilhado</option>
+              <option>Kitnet / Studio</option>
+              <option>Tanto faz</option>
+            </select>
+          </div>
+          <div class="frow">
+            <div class="fg">
+              <label>Período de entrada</label>
+              <select name="entrada">
+                <option value="">Selecione...</option>
+                <option>Imediato</option>
+                <option>Em até 1 mês</option>
+                <option>Em 2–3 meses</option>
+                <option>Mais de 3 meses</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label>Tempo de contrato</label>
+              <select name="contrato">
+                <option value="">Selecione...</option>
+                <option>6 meses</option>
+                <option>12 meses</option>
+                <option>18 meses</option>
+                <option>24 meses ou mais</option>
+                <option>Sem preferência</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-section-title">🧍 Estilo de vida</div>
+          <div class="fg">
+            <label>Rotina</label>
+            <select name="rotina">
+              <option value="">Selecione...</option>
+              <option>Matutino (acordo cedo)</option>
+              <option>Vespertino</option>
+              <option>Noturno (durmo tarde)</option>
+              <option>Variado / sem rotina fixa</option>
             </select>
           </div>
           <div class="fg">
-            <label>Faixa de aluguel (sua parte)</label>
-            <select name="aluguel" required>
-              <option value="">Selecione...</option>
-              <option>Até R$ 600</option><option>R$ 600 – R$ 900</option>
-              <option>R$ 900 – R$ 1.200</option><option>Acima de R$ 1.200</option>
-            </select>
+            <label>Preferências de convivência (marque todas que se aplicam)</label>
+            <div class="checkbox-group">
+              <label class="checkbox-item"><input type="checkbox" name="prefs" value="Não fumante"><span>🚭 Não fumante / prefiro ambiente sem fumo</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="prefs" value="Aceito pets"><span>🐾 Aceito animais de estimação</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="prefs" value="Tenho pets"><span>🐶 Tenho animal de estimação</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="prefs" value="Organizado"><span>🧹 Sou organizado e gosto de casa limpa</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="prefs" value="Home office"><span>💻 Trabalho/estudo em casa (home office)</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="prefs" value="Recebo visitas"><span>🎉 Recebo visitas/amigos frequentemente</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="prefs" value="Vegetariano"><span>🥗 Vegetariano / vegano</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="prefs" value="Silêncio"><span>🔇 Prefiro ambiente silencioso</span></label>
+            </div>
           </div>
-          <div class="fg"><label>Sobre você</label><textarea name="sobre" placeholder="Ex: Sou estudante da FDC, acordo cedo, sou organizado(a), não fumo..."></textarea></div>
+          <div class="fg"><label>Sobre você (conte mais para seus matches)</label><textarea name="sobre" placeholder="Ex: Sou estudante da FDC, acordo às 7h, sou organizado(a) e gosto de casa limpa. Não fumo, tenho um gato e amo cozinhar. Busco uma pessoa tranquila e respeitosa..."></textarea></div>
+
+          <div class="form-section-title">🔒 Verificação de identidade</div>
           <div class="fg">
-            <label>Documento (RG ou CNH)</label>
+            <label>Documento de identidade (RG ou CNH)</label>
             <div class="upload-box" onclick="triggerUpload('docUp')">
-              <div class="icon">📄</div>
-              <p id="docLabel">Clique para enviar foto do seu documento</p>
+              <div class="upload-icon">📄</div>
+              <p id="docLabel">Clique para enviar foto do seu RG ou CNH</p>
             </div>
             <input type="file" id="docUp" name="documento" accept="image/*,application/pdf" style="display:none" onchange="updateLabel('docUp','docLabel')">
           </div>
           <div class="fg">
             <label>Selfie segurando o documento</label>
             <div class="upload-box" onclick="triggerUpload('selfieUp')">
-              <div class="icon">🤳</div>
-              <p id="selfieLabel">Clique para enviar sua selfie com o documento</p>
+              <div class="upload-icon">🤳</div>
+              <p id="selfieLabel">Clique para enviar selfie com o documento visível</p>
             </div>
             <input type="file" id="selfieUp" name="selfie" accept="image/*" style="display:none" onchange="updateLabel('selfieUp','selfieLabel')">
           </div>
+
+          <div class="score-preview">
+            <div class="score-preview-num">30</div>
+            <div class="score-preview-info">
+              <h4>Score inicial ao se cadastrar</h4>
+              <p>Sobe para até 100 com verificações de CPF (+20), documento (+30), avaliações (+10 cada) e perfil completo (+25)</p>
+            </div>
+          </div>
+
           <button type="submit" class="btn-submit" id="submitBtn">Criar meu perfil e iniciar verificação 🔒</button>
-          <p class="priv">Dados protegidos · Verificação em até 24h · Score inicial: 30 pts</p>
+          <p class="priv">Dados protegidos · Verificação em até 24h · Cadastro 100% gratuito</p>
         </form>
       </div>
     </div>
@@ -300,35 +727,83 @@ footer p{font-size:0.83rem;line-height:1.8}
 </section>
 
 <footer>
-  <img src="logo.png" class="footer-logo" alt="DivideAi">
-  <p>Plataforma de moradia compartilhada com segurança em Belo Horizonte</p>
-  <p style="margin-top:0.4rem">contato@divideai.com.br · (38) 9 9991-3630</p>
+  <div class="footer-inner">
+    <div>
+      <img src="logo.png" class="footer-logo" alt="DivideAi">
+      <p class="footer-desc">Plataforma de moradia compartilhada com segurança em Belo Horizonte. Conectamos pessoas de confiança para dividir aluguel com tranquilidade.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Plataforma</h4>
+      <ul>
+        <li><a href="#apartamentos">Apartamentos</a></li>
+        <li><a href="#perfis">Colegas verificados</a></li>
+        <li><a href="#como-funciona">Como funciona</a></li>
+        <li><a href="#seguranca">Sistema de segurança</a></li>
+        <li><a href="#cadastro">Criar perfil grátis</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contato</h4>
+      <ul>
+        <li><a href="https://wa.me/5538999136306">WhatsApp</a></li>
+        <li><a href="mailto:contato@divideai.com.br">contato@divideai.com.br</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Política de privacidade</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 DivideAi · Todos os direitos reservados · Belo Horizonte, MG</p>
+    <p>(38) 9 9913-6306</p>
+  </div>
 </footer>
 
 <a href="https://wa.me/5538999136306?text=Olá!%20Tenho%20interesse%20na%20DivideAi%20e%20gostaria%20de%20saber%20mais." class="wpp-float" target="_blank" title="Falar no WhatsApp">💬</a>
 <div class="toast" id="toast"></div>
 
+<!-- MODAIS PERFIS -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
   <div class="modal" id="modalContent"></div>
+</div>
+
+<!-- MODAL APTS -->
+<div class="modal-overlay" id="aptOverlay" onclick="closeApt(event)">
+  <div class="modal" id="aptContent"></div>
 </div>
 
 <script>
 const WPP='5538999136306';
 const FORMSPREE='https://formspree.io/f/xwvzvrrd';
+
 const profiles={
-  ana:{name:'Ana Lima',initials:'AN',cls:'av1',bg:'linear-gradient(135deg,#1DB88A,#0d6e55)',curso:'Direito · 22 anos',av:4.9,nAv:4,score:87,bairro:'Savassi',aluguel:'R$ 700–900',sobre:'Sou estudante de Direito, acordo cedo e gosto de casa organizada. Trabalho meio período e adoro cozinhar. Tenho um gato pequeno e sou muito tranquila.',sb:{cpf:20,doc:30,perfil:25,aval:12}},
-  carlos:{name:'Carlos Melo',initials:'CM',cls:'av2',bg:'linear-gradient(135deg,#534AB7,#3C3489)',curso:'Dev de Software · 25 anos',av:5,nAv:7,score:92,bairro:'Funcionários',aluguel:'R$ 800–1.100',sobre:'Trabalho remoto como desenvolvedor. Sou muito organizado, silencioso e respeito o espaço de todos. Vegano, gosto de academia e não recebo visitas frequentes.',sb:{cpf:20,doc:30,perfil:25,aval:17}},
-  julia:{name:'Júlia Santos',initials:'JS',cls:'av3',bg:'linear-gradient(135deg,#D85A30,#993C1D)',curso:'Nutrição · UFMG · 20 anos',av:4.0,nAv:2,score:74,bairro:'Pampulha',aluguel:'Até R$ 600',sobre:'Estudante da UFMG, amo cozinhar e sempre tem comida boa em casa! Sou sociável mas respeito o silêncio nos dias de prova. Não fumo.',sb:{cpf:20,doc:30,perfil:20,aval:4}}
+  ana:{name:'Ana Lima',initials:'AN',bg:'linear-gradient(135deg,#1DB88A,#0d6e55)',curso:'Direito · FDC · 22 anos',av:4.9,nAv:4,score:87,bairro:'Savassi',aluguel:'Até R$900',rotina:'Matutina',sobre:'Sou estudante de Direito na FDC, acordo cedo e gosto de casa organizada. Trabalho meio período e adoro cozinhar. Tenho um gato pequeno e sou muito tranquila. Prefiro dividir com mulheres.',prefs:['Não fumante','Aceito pets','Organizado','Home office'],sb:{cpf:20,doc:30,perfil:25,aval:12}},
+  carlos:{name:'Carlos Melo',initials:'CM',bg:'linear-gradient(135deg,#534AB7,#3C3489)',curso:'Dev de Software · 25 anos',av:5,nAv:7,score:92,bairro:'Funcionários',aluguel:'R$800–1.100',rotina:'Noturno',sobre:'Trabalho remoto como desenvolvedor. Sou muito organizado, silencioso e respeito o espaço de todos. Vegano, gosto de academia e não recebo visitas frequentes.',prefs:['Não fumante','Organizado','Home office','Silêncio'],sb:{cpf:20,doc:30,perfil:25,aval:17}},
+  julia:{name:'Júlia Santos',initials:'JS',bg:'linear-gradient(135deg,#D85A30,#993C1D)',curso:'Nutrição · UFMG · 20 anos',av:4.0,nAv:2,score:74,bairro:'Pampulha',aluguel:'Até R$600',rotina:'Matutina',sobre:'Estudante da UFMG, amo cozinhar e sempre tem comida boa em casa! Sou sociável mas respeito o silêncio nos dias de prova. Não fumo.',prefs:['Não fumante','Aceito pets'],sb:{cpf:20,doc:30,perfil:20,aval:4}},
+  pedro:{name:'Pedro Oliveira',initials:'PO',bg:'linear-gradient(135deg,#C8A84B,#8B6914)',curso:'Engenharia Civil · UFMG · 23 anos',av:4.8,nAv:3,score:80,bairro:'Buritis',aluguel:'R$700–900',rotina:'Matutino',sobre:'Estudante de engenharia, acordo cedo e passo o dia na faculdade. Gosto de academia e futebol. Sou organizado e respeito os espaços comuns.',prefs:['Não fumante','Organizado','Esportista'],sb:{cpf:20,doc:30,perfil:20,aval:10}},
+  marina:{name:'Marina Ferreira',initials:'MF',bg:'linear-gradient(135deg,#E91E8C,#9C1560)',curso:'Medicina · UFMG · 24 anos',av:5.0,nAv:9,score:96,bairro:'Sion',aluguel:'R$1.000–1.300',rotina:'Variada (plantões)',sobre:'Residente de medicina, tenho horários variados por conta dos plantões. Sou muito tranquila, organizada e reservada. Prefiro ambiente silencioso.',prefs:['Não fumante','Organizado','Silêncio'],sb:{cpf:20,doc:30,perfil:25,aval:21}},
+  gabriel:{name:'Gabriel Alves',initials:'GA',bg:'linear-gradient(135deg,#0EA5E9,#0369A1)',curso:'Administração · PUC · 21 anos',av:4.2,nAv:1,score:68,bairro:'Serra',aluguel:'R$600–800',rotina:'Vespertino',sobre:'Estudante de ADM na PUC, gosto de estar com pessoas e sou bem sociável. Estou no começo da faculdade e busco alguém para dividir perto do campus.',prefs:['Aceito pets','Recebo visitas'],sb:{cpf:20,doc:0,perfil:20,aval:4}}
 };
+
+const apts={
+  apt1:{title:'Apto 3 quartos — Savassi',bg:'bg1',emoji:'🏢',preco:'R$ 750/mês',area:'85m²',loc:'Rua Pernambuco, 320 — Savassi',quartos:'3 quartos',banheiros:'2 banheiros',vagas:'1 vaga',mobilia:'Totalmente mobiliado',cond:'R$ 450/mês (incluso)',host:'Marcos Rodrigues',hostScore:91,hostAv:4.9,hostInit:'MR',hostBg:'linear-gradient(135deg,#1DB88A,#0d6e55)',sobre:'Apartamento amplo e bem localizado no coração do Savassi. A 5 minutos a pé de restaurantes, bares e do metrô. Tem academia no condomínio e portaria 24h. Buscamos uma pessoa tranquila e organizada para dividir.'},
+  apt2:{title:'Cobertura duplex — Lourdes',bg:'bg2',emoji:'🏠',preco:'R$ 1.200/mês',area:'140m²',loc:'Av. do Contorno, 5000 — Lourdes',quartos:'3 quartos',banheiros:'3 banheiros',vagas:'2 vagas',mobilia:'Semi-mobiliado',cond:'R$ 800/mês (incluso)',host:'Letícia Carvalho',hostScore:95,hostAv:5.0,hostInit:'LC',hostBg:'linear-gradient(135deg,#534AB7,#3C3489)',sobre:'Cobertura incrível com terraço e piscina privativa. Vista panorâmica de BH. Ambiente sofisticado para profissionais ou estudantes de pós-graduação. Ambiente 100% não fumante.'},
+  apt3:{title:'Quarto em casa — Pampulha',bg:'bg3',emoji:'🏘️',preco:'R$ 480/mês',area:'12m² (quarto)',loc:'Rua Itutinga, 45 — Pampulha',quartos:'1 quarto disponível',banheiros:'1 banheiro compartilhado',vagas:'Sem garagem',mobilia:'Quarto mobiliado',cond:'Água e luz inclusos',host:'Rafael Silva',hostScore:78,hostAv:4.6,hostInit:'RS',hostBg:'linear-gradient(135deg,#D85A30,#993C1D)',sobre:'Casa familiar próxima à UFMG. Quarto mobiliado com cama, guarda-roupa e mesa de estudos. Ambiente calmo, ideal para estudantes. Quintal com churrasqueira disponível nos fins de semana.'},
+  apt4:{title:'Apto 2 quartos — Buritis',bg:'bg4',emoji:'🏗️',preco:'R$ 890/mês',area:'72m²',loc:'Rua Jequitibá, 180 — Buritis',quartos:'2 quartos',banheiros:'2 banheiros',vagas:'1 vaga',mobilia:'Semi-mobiliado',cond:'R$ 550/mês (incluso)',host:'Fernanda Costa',hostScore:88,hostAv:4.8,hostInit:'FC',hostBg:'linear-gradient(135deg,#C8A84B,#8B6914)',sobre:'Apartamento moderno em condomínio fechado com segurança 24h. Sacada com churrasqueira. Próximo ao shopping e ao Parque Aggeo Pio Sobrinho. Buscamos pessoa de 22–35 anos.'},
+  apt5:{title:'Flat mobiliado — Funcionários',bg:'bg5',emoji:'🏛️',preco:'R$ 650/mês',area:'55m²',loc:'Rua Fernandes Tourinho, 890 — Funcionários',quartos:'2 quartos',banheiros:'1 banheiro',vagas:'1 vaga',mobilia:'Totalmente mobiliado',cond:'R$ 400/mês (incluso)',host:'Beatriz Mendes',hostScore:93,hostAv:4.9,hostInit:'BM',hostBg:'linear-gradient(135deg,#E91E8C,#9C1560)',sobre:'Flat completamente equipado, só trazer as roupas! Pet friendly para animais de pequeno porte. Próximo ao Parque Municipal e às principais avenidas. Aceito estudantes e profissionais.'},
+  apt6:{title:'Apto 3 quartos — Santa Efigênia',bg:'bg1',emoji:'🏢',preco:'R$ 560/mês',area:'90m²',loc:'Av. Bias Fortes, 1200 — Santa Efigênia',quartos:'3 quartos',banheiros:'2 banheiros',vagas:'Sem garagem',mobilia:'Não mobiliado',cond:'R$ 380/mês (incluso)',host:'Gabriel Oliveira',hostScore:82,hostAv:4.7,hostInit:'GO',hostBg:'linear-gradient(135deg,#0EA5E9,#0369A1)',sobre:'Apartamento espaçoso a 3 minutos da estação de metrô Santa Efigênia. Dois quartos já alugados, buscamos o terceiro morador. Ambiente animado mas respeitoso.'}
+};
+
 function openModal(id){
   const p=profiles[id];
   const stars='★'.repeat(Math.round(p.av))+'☆'.repeat(5-Math.round(p.av));
-  const msg=`Oi%20${encodeURIComponent(p.name.split(' ')[0])}!%20Vi%20seu%20perfil%20na%20DivideAi%20e%20gostaria%20de%20conversar%20sobre%20dividir%20ap%C3%AA%20em%20BH.`;
+  const msg=`Oi%20${encodeURIComponent(p.name.split(' ')[0])}!%20Vi%20seu%20perfil%20na%20DivideAi%20e%20gostaria%20de%20conversar.`;
+  const prefsHtml=p.prefs.map(x=>`<span class="tag">${x}</span>`).join('');
   document.getElementById('modalContent').innerHTML=`
     <button class="modal-close" onclick="closeModal()">✕</button>
     <div class="m-avatar" style="background:${p.bg}">${p.initials}</div>
     <h3 style="font-size:1.2rem;font-weight:800;letter-spacing:-0.02em">${p.name}</h3>
-    <p style="color:var(--muted);font-size:0.88rem;margin:0.2rem 0 0.75rem">${p.curso} · ${p.bairro} · ${p.aluguel}/mês</p>
+    <p style="color:var(--muted);font-size:0.88rem;margin:0.2rem 0 0.4rem">${p.curso}</p>
+    <p style="color:var(--muted);font-size:0.82rem;margin-bottom:0.75rem">📍 ${p.bairro} · 💰 ${p.aluguel}/mês · 🌙 ${p.rotina}</p>
     <div style="display:inline-flex;align-items:center;gap:0.4rem;background:#E8FBF4;color:#0d6e55;padding:0.2rem 0.75rem;border-radius:100px;font-size:0.75rem;font-weight:700">✓ Identidade Verificada</div>
     <div class="m-score">
       <div style="display:flex;align-items:center;gap:1rem">
@@ -343,14 +818,48 @@ function openModal(id){
       </div>
     </div>
     <div class="stars" style="color:#C8A84B">${stars} <span style="color:var(--muted);font-size:0.8rem">${p.av.toFixed(1)} · ${p.nAv} avaliações</span></div>
-    <p style="margin:1rem 0;font-size:0.88rem;color:var(--muted);line-height:1.65">${p.sobre}</p>
+    <div class="tags" style="margin:0.75rem 0">${prefsHtml}</div>
+    <p style="font-size:0.88rem;color:var(--muted);line-height:1.65;margin-bottom:0.5rem">${p.sobre}</p>
     <div class="m-contact">
-      <a class="c-btn wpp" href="https://wa.me/${WPP}?text=${msg}" target="_blank">💬 Chamar no WhatsApp</a>
+      <a class="c-btn wpp" href="https://wa.me/${WPP}?text=${msg}" target="_blank">💬 Entrar em contato via WhatsApp</a>
       <button class="c-btn" onclick="showToast('Mensagem enviada! Respondemos em até 24h.')">📧 Enviar mensagem na plataforma</button>
     </div>`;
   document.getElementById('modalOverlay').classList.add('show');
 }
+
+function openApt(id){
+  const a=apts[id];
+  const msg=`Olá!%20Vi%20o%20apartamento%20${encodeURIComponent(a.title)}%20na%20DivideAi%20e%20tenho%20interesse!`;
+  document.getElementById('aptContent').innerHTML=`
+    <button class="modal-close" onclick="closeApt()">✕</button>
+    <div class="m-apt-img ${a.bg}">${a.emoji}<div class="apt-badge" style="position:absolute;top:0.75rem;left:0.75rem">${a.preco}</div></div>
+    <h3 style="font-size:1.15rem;font-weight:800;margin-bottom:0.5rem">${a.title}</h3>
+    <p style="color:var(--muted);font-size:0.85rem;margin-bottom:1rem">📍 ${a.loc}</p>
+    <div style="background:var(--bg);border-radius:var(--radius-sm);padding:1rem;margin-bottom:1rem">
+      <div class="apt-detail-row"><span class="apt-detail-label">Área</span><span class="apt-detail-val">${a.area}</span></div>
+      <div class="apt-detail-row"><span class="apt-detail-label">Quartos</span><span class="apt-detail-val">${a.quartos}</span></div>
+      <div class="apt-detail-row"><span class="apt-detail-label">Banheiros</span><span class="apt-detail-val">${a.banheiros}</span></div>
+      <div class="apt-detail-row"><span class="apt-detail-label">Garagem</span><span class="apt-detail-val">${a.vagas}</span></div>
+      <div class="apt-detail-row"><span class="apt-detail-label">Mobília</span><span class="apt-detail-val">${a.mobilia}</span></div>
+      <div class="apt-detail-row"><span class="apt-detail-label">Condomínio</span><span class="apt-detail-val">${a.cond}</span></div>
+    </div>
+    <p style="font-size:0.85rem;color:var(--muted);line-height:1.65;margin-bottom:1rem">${a.sobre}</p>
+    <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:var(--bg);border-radius:var(--radius-sm);margin-bottom:1rem">
+      <div class="apt-avatar" style="width:40px;height:40px;border-radius:50%;background:${a.hostBg};display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;color:#fff;flex-shrink:0">${a.hostInit}</div>
+      <div>
+        <div style="font-weight:700;font-size:0.88rem;color:var(--navy)">${a.host} <span style="display:inline-flex;align-items:center;gap:0.3rem;background:#E8FBF4;color:#0d6e55;padding:0.1rem 0.5rem;border-radius:100px;font-size:0.7rem;font-weight:700">✓ Verificado</span></div>
+        <div style="font-size:0.78rem;color:var(--muted)">Score ${a.hostScore} · ★${a.hostAv}</div>
+      </div>
+    </div>
+    <div class="m-contact">
+      <a class="c-btn wpp" href="https://wa.me/${WPP}?text=${msg}" target="_blank">💬 Tenho interesse — falar no WhatsApp</a>
+      <button class="c-btn" onclick="showToast('Solicitação enviada! Entraremos em contato em breve.')">📩 Solicitar visita</button>
+    </div>`;
+  document.getElementById('aptOverlay').classList.add('show');
+}
+
 function closeModal(e){if(!e||e.target===document.getElementById('modalOverlay'))document.getElementById('modalOverlay').classList.remove('show')}
+function closeApt(e){if(!e||e.target===document.getElementById('aptOverlay'))document.getElementById('aptOverlay').classList.remove('show')}
 function goTo(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
 function maskCPF(el){let v=el.value.replace(/\D/g,'');if(v.length>3)v=v.slice(0,3)+'.'+v.slice(3);if(v.length>7)v=v.slice(0,7)+'.'+v.slice(7);if(v.length>11)v=v.slice(0,11)+'-'+v.slice(11);el.value=v.slice(0,14)}
 function triggerUpload(id){document.getElementById(id).click()}
@@ -362,8 +871,12 @@ async function handleSubmit(e){
   try{
     const fd=new FormData(e.target);
     const r=await fetch(FORMSPREE,{method:'POST',body:fd,headers:{Accept:'application/json'}});
-    if(r.ok){showToast('🎉 Cadastro enviado! Confirmação chegará em até 24h.');e.target.reset();document.getElementById('docLabel').textContent='Clique para enviar foto do seu documento';document.getElementById('selfieLabel').textContent='Clique para enviar sua selfie com o documento';}
-    else{showToast('Erro ao enviar. Tente novamente ou chame no WhatsApp.');}
+    if(r.ok){
+      showToast('🎉 Perfil enviado! Confirmaremos por e-mail em até 24h.');
+      e.target.reset();
+      document.getElementById('docLabel').textContent='Clique para enviar foto do seu RG ou CNH';
+      document.getElementById('selfieLabel').textContent='Clique para enviar selfie com o documento visível';
+    }else{showToast('Erro ao enviar. Tente novamente ou chame no WhatsApp.');}
   }catch(err){showToast('Erro de conexão. Tente novamente.');}
   btn.disabled=false;btn.textContent='Criar meu perfil e iniciar verificação 🔒';
 }

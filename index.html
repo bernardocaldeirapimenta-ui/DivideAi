@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DivideAi — Encontre Colegas de Confiança em BH</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1B2A4A;--navy2:#243457;
+  --teal:#1DB88A;--teal2:#17A07A;--teal3:#0d6e55;
+  --gold:#C8A84B;
+  --bg:#F5F6FA;--white:#fff;
+  --border:#E2E5EE;--border2:#CBD0DE;
+  --text:#1B2A4A;--muted:#6B7594;--light:#A8B0C8;
+  --radius:14px;--radius-sm:9px;
+  --font:'Plus Jakarta Sans',sans-serif;
+}
+body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:1.6;font-size:15px}
+nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:68px;position:sticky;top:0;z-index:100;box-shadow:0 1px 12px rgba(27,42,74,0.06)}
+.logo-img{height:36px;width:auto}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:0.88rem;font-weight:500;transition:color 0.2s}
+.nav-links a:hover{color:var(--navy)}
+.btn-nav{background:var(--navy);color:#fff;padding:0.55rem 1.4rem;border-radius:100px;font-size:0.88rem;font-weight:600;text-decoration:none;transition:background 0.2s}
+.btn-nav:hover{background:var(--navy2)}
+.hero{background:var(--navy);color:#fff;padding:5.5rem 2.5rem 5rem;text-align:center;position:relative;overflow:hidden}
+.hero-circle1{position:absolute;top:-100px;right:-80px;width:420px;height:420px;border-radius:50%;background:rgba(29,184,138,0.08);pointer-events:none}
+.hero-circle2{position:absolute;bottom:-120px;left:-60px;width:320px;height:320px;border-radius:50%;background:rgba(200,168,75,0.07);pointer-events:none}
+.hero-circle3{position:absolute;top:40%;left:5%;width:180px;height:180px;border-radius:50%;background:rgba(29,184,138,0.05);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(29,184,138,0.15);border:1px solid rgba(29,184,138,0.3);color:#6DEBB8;padding:0.4rem 1.1rem;border-radius:100px;font-size:0.78rem;font-weight:600;margin-bottom:2rem;letter-spacing:0.04em;text-transform:uppercase}
+.hero-logo{height:56px;margin:0 auto 2rem;display:block;filter:brightness(0) invert(1)}
+.hero h1{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;line-height:1.08;margin-bottom:1.25rem;max-width:720px;margin-left:auto;margin-right:auto;letter-spacing:-0.02em}
+.hero h1 em{font-style:normal;color:var(--teal)}
+.hero p{color:#A8B8D0;font-size:1.05rem;max-width:520px;margin:0 auto 2.75rem;font-weight:400;line-height:1.7}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--teal);color:#fff;padding:0.9rem 2.2rem;border-radius:100px;font-size:0.95rem;font-weight:700;border:none;cursor:pointer;transition:all 0.2s;font-family:var(--font)}
+.btn-primary:hover{background:var(--teal2);transform:translateY(-1px)}
+.btn-ghost{background:rgba(255,255,255,0.08);color:#fff;padding:0.9rem 2.2rem;border-radius:100px;font-size:0.95rem;font-weight:600;border:1px solid rgba(255,255,255,0.2);cursor:pointer;transition:all 0.2s;font-family:var(--font)}
+.btn-ghost:hover{background:rgba(255,255,255,0.14)}
+.trust{background:var(--white);padding:1.25rem 2.5rem;display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;border-bottom:1px solid var(--border)}
+.trust-item{display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:var(--muted);font-weight:500}
+.trust-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);flex-shrink:0}
+section{padding:5rem 2.5rem}
+.container{max-width:1100px;margin:0 auto}
+.section-eyebrow{font-size:0.75rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.6rem}
+.section-title{font-size:clamp(1.7rem,3vw,2.4rem);font-weight:800;margin-bottom:0.9rem;letter-spacing:-0.02em;color:var(--navy)}
+.section-sub{color:var(--muted);max-width:520px;margin-bottom:3.5rem;font-size:0.95rem;line-height:1.7}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem}
+.step{background:var(--white);border-radius:var(--radius);padding:1.75rem;border:1px solid var(--border);transition:box-shadow 0.2s}
+.step:hover{box-shadow:0 6px 24px rgba(27,42,74,0.08)}
+.step-num{font-size:2.5rem;font-weight:800;color:var(--border2);line-height:1;margin-bottom:1rem}
+.step-icon{width:40px;height:40px;border-radius:var(--radius-sm);background:linear-gradient(135deg,#E8FBF4,#D0F5E8);display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:0.75rem}
+.step h3{font-size:0.95rem;font-weight:700;margin-bottom:0.4rem;color:var(--navy)}
+.step p{font-size:0.85rem;color:var(--muted);line-height:1.6}
+.sec-bg{background:var(--navy)}
+.security-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem}
+.sec-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius);padding:1.5rem;transition:background 0.2s}
+.sec-card:hover{background:rgba(255,255,255,0.08)}
+.sec-icon{width:46px;height:46px;background:rgba(29,184,138,0.2);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:1.2rem}
+.sec-card h3{color:#fff;font-size:0.95rem;font-weight:700;margin-bottom:0.4rem}
+.sec-card p{color:#8DA0BA;font-size:0.83rem;line-height:1.6}
+.pts-badge{display:inline-flex;align-items:center;gap:0.35rem;background:rgba(29,184,138,0.2);border:1px solid rgba(29,184,138,0.35);color:#6DEBB8;padding:0.2rem 0.65rem;border-radius:100px;font-size:0.75rem;font-weight:700;margin-top:0.85rem}
+.profiles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.5rem}
+.profile-card{background:var(--white);border-radius:var(--radius);padding:1.5rem;border:1px solid var(--border);transition:transform 0.2s,box-shadow 0.2s;cursor:pointer}
+.profile-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(27,42,74,0.1)}
+.profile-top{display:flex;align-items:center;gap:1rem;margin-bottom:1.1rem}
+.avatar{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1rem;color:#fff;flex-shrink:0}
+.av1{background:linear-gradient(135deg,#1DB88A,#0d6e55)}
+.av2{background:linear-gradient(135deg,#534AB7,#3C3489)}
+.av3{background:linear-gradient(135deg,#D85A30,#993C1D)}
+.profile-info h4{font-size:0.95rem;font-weight:700;margin-bottom:0.1rem;color:var(--navy)}
+.profile-info p{font-size:0.8rem;color:var(--muted)}
+.v-badge{display:inline-flex;align-items:center;gap:0.3rem;background:#E8FBF4;color:#0d6e55;padding:0.18rem 0.6rem;border-radius:100px;font-size:0.72rem;font-weight:700;margin-top:0.3rem}
+.pscore{background:var(--bg);border-radius:var(--radius-sm);padding:0.8rem;margin:1rem 0}
+.score-row{display:flex;justify-content:space-between;align-items:center;font-size:0.83rem}
+.score-bar{height:5px;background:var(--border);border-radius:3px;margin-top:0.4rem;overflow:hidden}
+.score-fill{height:100%;background:linear-gradient(90deg,#1DB88A,#6DEBB8);border-radius:3px}
+.stars{color:#C8A84B;font-size:0.88rem;margin-top:0.25rem}
+.tags{display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:0.75rem}
+.tag{background:var(--bg);color:var(--muted);padding:0.18rem 0.6rem;border-radius:100px;font-size:0.75rem;font-weight:500;border:1px solid var(--border)}
+.btn-match{width:100%;background:var(--navy);color:#fff;border:none;padding:0.8rem;border-radius:var(--radius-sm);font-size:0.88rem;font-weight:700;cursor:pointer;margin-top:1rem;font-family:var(--font);transition:background 0.2s}
+.btn-match:hover{background:var(--navy2)}
+.form-section{background:var(--white)}
+.form-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:4rem;align-items:start}
+@media(max-width:750px){.form-grid{grid-template-columns:1fr}}
+.form-info h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:1rem;letter-spacing:-0.02em}
+.form-info p{color:var(--muted);margin-bottom:1.75rem;font-size:0.92rem;line-height:1.7}
+.benefit{display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1.1rem}
+.benefit-icon{width:34px;height:34px;background:#E8FBF4;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.95rem}
+.benefit-text h4{font-size:0.88rem;font-weight:700;margin-bottom:0.15rem;color:var(--navy)}
+.benefit-text p{font-size:0.8rem;color:var(--muted);line-height:1.5}
+.wpp-card{margin-top:2rem;padding:1.1rem 1.25rem;background:#F0FFF8;border-radius:var(--radius);border:1px solid #B8EDD8}
+.wpp-card p{font-size:0.85rem;color:var(--teal3);font-weight:600;margin-bottom:0.6rem}
+.wpp-btn{display:inline-flex;align-items:center;gap:0.5rem;background:#25D366;color:#fff;padding:0.55rem 1.1rem;border-radius:100px;font-size:0.85rem;font-weight:600;text-decoration:none;transition:background 0.2s}
+.wpp-btn:hover{background:#1ebe5a}
+.form-box{background:var(--bg);border-radius:var(--radius);padding:2.25rem;border:1px solid var(--border)}
+.form-box h3{font-size:1.05rem;font-weight:800;margin-bottom:1.75rem;color:var(--navy)}
+.fg{margin-bottom:1.2rem}
+label{display:block;font-size:0.78rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;letter-spacing:0.02em;text-transform:uppercase}
+input,select,textarea{width:100%;padding:0.72rem 1rem;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:0.9rem;font-family:var(--font);background:var(--white);color:var(--text);transition:border-color 0.2s;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--teal)}
+textarea{resize:vertical;min-height:80px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.upload-box{border:2px dashed var(--border2);border-radius:var(--radius-sm);padding:1.4rem;text-align:center;cursor:pointer;transition:border-color 0.2s,background 0.2s;background:var(--white)}
+.upload-box:hover{border-color:var(--teal);background:#F0FFF8}
+.upload-box .icon{font-size:1.4rem;margin-bottom:0.3rem}
+.upload-box p{font-size:0.8rem;color:var(--muted)}
+.btn-submit{width:100%;background:linear-gradient(135deg,#1DB88A,#17A07A);color:#fff;border:none;padding:1rem;border-radius:var(--radius-sm);font-size:0.95rem;font-weight:800;cursor:pointer;font-family:var(--font);transition:opacity 0.2s;margin-top:0.5rem}
+.btn-submit:hover{opacity:0.9}
+.btn-submit:disabled{opacity:0.5;cursor:not-allowed}
+.priv{font-size:0.75rem;color:var(--light);text-align:center;margin-top:0.75rem}
+.modal-overlay{position:fixed;inset:0;background:rgba(10,15,30,0.6);z-index:200;display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity 0.25s}
+.modal-overlay.show{opacity:1;pointer-events:all}
+.modal{background:var(--white);border-radius:var(--radius);padding:2rem;max-width:490px;width:100%;position:relative;max-height:90vh;overflow-y:auto;transform:translateY(24px);transition:transform 0.25s}
+.modal-overlay.show .modal{transform:translateY(0)}
+.modal-close{position:absolute;top:1rem;right:1rem;background:var(--bg);border:none;cursor:pointer;font-size:1rem;color:var(--muted);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.m-avatar{width:68px;height:68px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.2rem;color:#fff;margin-bottom:1rem}
+.m-score{background:var(--bg);border-radius:var(--radius);padding:1.1rem;margin:1rem 0;border:1px solid var(--border)}
+.score-big{font-size:2.8rem;font-weight:800;color:var(--navy);line-height:1;letter-spacing:-0.03em}
+.score-desc{font-size:0.78rem;color:var(--muted);margin-top:0.2rem}
+.sb{display:flex;flex-direction:column;gap:0.4rem;margin-top:0.9rem}
+.sb-row{display:flex;justify-content:space-between;font-size:0.8rem}
+.sb-l{color:var(--muted)}.sb-v{font-weight:700;color:#0d6e55}
+.m-contact{display:flex;flex-direction:column;gap:0.7rem;margin-top:1rem}
+.c-btn{display:flex;align-items:center;gap:0.75rem;padding:0.8rem 1rem;border-radius:var(--radius-sm);border:1.5px solid var(--border);font-size:0.88rem;font-weight:600;cursor:pointer;background:var(--white);font-family:var(--font);text-decoration:none;color:var(--text);transition:background 0.2s}
+.c-btn:hover{background:var(--bg)}
+.c-btn.wpp{background:#25D366;color:#fff;border-color:#25D366}
+.c-btn.wpp:hover{background:#1ebe5a}
+footer{background:var(--navy);color:#8DA0BA;padding:3rem 2.5rem;text-align:center}
+.footer-logo{height:32px;filter:brightness(0) invert(1);margin-bottom:1rem}
+footer p{font-size:0.83rem;line-height:1.8}
+.wpp-float{position:fixed;bottom:1.5rem;right:1.5rem;background:#25D366;color:#fff;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 4px 20px rgba(0,0,0,0.2);cursor:pointer;z-index:99;text-decoration:none;transition:transform 0.2s}
+.wpp-float:hover{transform:scale(1.1)}
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--navy);color:#fff;padding:0.8rem 1.75rem;border-radius:100px;font-size:0.88rem;z-index:300;transition:transform 0.3s;white-space:nowrap;max-width:90vw;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.2)}
+.toast.show{transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<nav>
+  <img src="logo.png" class="logo-img" alt="DivideAi">
+  <ul class="nav-links">
+    <li><a href="#como-funciona">Como funciona</a></li>
+    <li><a href="#seguranca">Segurança</a></li>
+    <li><a href="#perfis">Perfis</a></li>
+    <li><a href="#cadastro">Cadastrar</a></li>
+  </ul>
+  <a href="#cadastro" class="btn-nav">Cadastrar grátis</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-circle1"></div>
+  <div class="hero-circle2"></div>
+  <div class="hero-circle3"></div>
+  <img src="logo.png" class="hero-logo" alt="DivideAi">
+  <div class="hero-badge">🏠 Plataforma de moradia compartilhada em BH</div>
+  <h1>Encontre seu colega de quarto <em>ideal e seguro</em></h1>
+  <p>Matching inteligente com perfis verificados, pontuação de confiança e avaliações reais. Dividir fica mais fácil quando você confia em quem divide.</p>
+  <div class="hero-btns">
+    <button class="btn-primary" onclick="goTo('cadastro')">Quero me cadastrar grátis</button>
+    <button class="btn-ghost" onclick="goTo('perfis')">Ver perfis disponíveis</button>
+  </div>
+</div>
+
+<div class="trust">
+  <div class="trust-item"><div class="trust-dot"></div>Verificação de CPF</div>
+  <div class="trust-item"><div class="trust-dot"></div>Documento + Selfie</div>
+  <div class="trust-item"><div class="trust-dot"></div>Score de Confiança</div>
+  <div class="trust-item"><div class="trust-dot"></div>Avaliações entre usuários</div>
+  <div class="trust-item"><div class="trust-dot"></div>Foco em BH</div>
+</div>
+
+<section id="como-funciona" style="background:var(--bg)">
+  <div class="container">
+    <div class="section-eyebrow">Simples e seguro</div>
+    <h2 class="section-title">Como funciona a DivideAi</h2>
+    <p class="section-sub">Em poucos passos você encontra o parceiro ideal para dividir aluguel em Belo Horizonte.</p>
+    <div class="steps">
+      <div class="step"><div class="step-icon">👤</div><div class="step-num">01</div><h3>Crie seu perfil</h3><p>Preencha suas preferências de moradia, rotina e personalidade. Quanto mais completo, melhor o matching.</p></div>
+      <div class="step"><div class="step-icon">🪪</div><div class="step-num">02</div><h3>Verifique sua identidade</h3><p>Envie seu documento e uma selfie. Nossa equipe valida manualmente e você recebe o selo verificado.</p></div>
+      <div class="step"><div class="step-icon">🔍</div><div class="step-num">03</div><h3>Conheça os matches</h3><p>Veja perfis compatíveis com score de confiança e avaliações de quem já morou com eles.</p></div>
+      <div class="step"><div class="step-icon">💬</div><div class="step-num">04</div><h3>Conecte e combine</h3><p>Entre em contato pelo WhatsApp, marque uma conversa e decida com segurança se é a pessoa certa.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="seguranca" class="sec-bg">
+  <div class="container">
+    <div class="section-eyebrow" style="color:#6DEBB8">Sistema de Segurança</div>
+    <h2 class="section-title" style="color:#fff">A confiança que você merece</h2>
+    <p class="section-sub" style="color:#8DA0BA">Nosso sistema de verificação em camadas garante que você sabe com quem está dividindo antes de assinar qualquer contrato.</p>
+    <div class="security-grid">
+      <div class="sec-card"><div class="sec-icon">🪪</div><h3>Verificação de CPF</h3><p>Confirmamos que o CPF informado é válido e pertence à pessoa cadastrada, evitando perfis falsos.</p><div class="pts-badge">+20 pontos no score</div></div>
+      <div class="sec-card"><div class="sec-icon">🤳</div><h3>Selfie + Documento</h3><p>O usuário envia foto do RG ou CNH ao lado do rosto. Nossa equipe valida manualmente em até 24h.</p><div class="pts-badge">+30 pontos no score</div></div>
+      <div class="sec-card"><div class="sec-icon">⭐</div><h3>Score de Confiança</h3><p>Pontuação de 0 a 100 calculada com verificações, tempo na plataforma e avaliações recebidas.</p><div class="pts-badge">Atualizado em tempo real</div></div>
+      <div class="sec-card"><div class="sec-icon">💬</div><h3>Avaliações entre usuários</h3><p>Após cada experiência, usuários avaliam uns aos outros com estrelas e comentários verificados.</p><div class="pts-badge">+10 pontos por avaliação 5★</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="perfis" style="background:var(--bg)">
+  <div class="container">
+    <div class="section-eyebrow">Disponíveis agora</div>
+    <h2 class="section-title">Perfis verificados em BH</h2>
+    <p class="section-sub">Pessoas reais, verificadas e prontas para dividir. Clique para ver detalhes e entrar em contato.</p>
+    <div class="profiles-grid">
+      <div class="profile-card" onclick="openModal('ana')">
+        <div class="profile-top"><div class="avatar av1">AN</div><div class="profile-info"><h4>Ana Lima</h4><p>Estudante de Direito · 22 anos</p><div class="v-badge">✓ Verificada</div></div></div>
+        <div class="pscore"><div class="score-row"><span style="color:var(--muted);font-size:0.82rem">Score de Confiança</span><span style="font-weight:700;color:var(--navy);font-size:0.82rem">87/100</span></div><div class="score-bar"><div class="score-fill" style="width:87%"></div></div></div>
+        <div class="stars">★★★★★ <span style="color:var(--muted);font-size:0.78rem">(4 avaliações)</span></div>
+        <div class="tags"><span class="tag">Savassi</span><span class="tag">Não fumante</span><span class="tag">Pets ok</span><span class="tag">Home office</span></div>
+        <button class="btn-match">Ver perfil completo →</button>
+      </div>
+      <div class="profile-card" onclick="openModal('carlos')">
+        <div class="profile-top"><div class="avatar av2">CM</div><div class="profile-info"><h4>Carlos Melo</h4><p>Dev de Software · 25 anos</p><div class="v-badge">✓ Verificado</div></div></div>
+        <div class="pscore"><div class="score-row"><span style="color:var(--muted);font-size:0.82rem">Score de Confiança</span><span style="font-weight:700;color:var(--navy);font-size:0.82rem">92/100</span></div><div class="score-bar"><div class="score-fill" style="width:92%"></div></div></div>
+        <div class="stars">★★★★★ <span style="color:var(--muted);font-size:0.78rem">(7 avaliações)</span></div>
+        <div class="tags"><span class="tag">Funcionários</span><span class="tag">Silencioso</span><span class="tag">Organizado</span><span class="tag">Vegano</span></div>
+        <button class="btn-match">Ver perfil completo →</button>
+      </div>
+      <div class="profile-card" onclick="openModal('julia')">
+        <div class="profile-top"><div class="avatar av3">JS</div><div class="profile-info"><h4>Júlia Santos</h4><p>Nutrição · UFMG · 20 anos</p><div class="v-badge">✓ Verificada</div></div></div>
+        <div class="pscore"><div class="score-row"><span style="color:var(--muted);font-size:0.82rem">Score de Confiança</span><span style="font-weight:700;color:var(--navy);font-size:0.82rem">74/100</span></div><div class="score-bar"><div class="score-fill" style="width:74%"></div></div></div>
+        <div class="stars">★★★★☆ <span style="color:var(--muted);font-size:0.78rem">(2 avaliações)</span></div>
+        <div class="tags"><span class="tag">Pampulha</span><span class="tag">Estudante</span><span class="tag">Cozinha muito</span></div>
+        <button class="btn-match">Ver perfil completo →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cadastro" class="form-section">
+  <div class="container">
+    <div class="form-grid">
+      <div class="form-info">
+        <div class="section-eyebrow">Junte-se agora</div>
+        <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:1rem;letter-spacing:-0.02em">Comece sua busca com segurança</h2>
+        <p style="color:var(--muted);font-size:0.92rem;line-height:1.7;margin-bottom:1.75rem">Crie seu perfil gratuitamente e tenha acesso a pessoas verificadas buscando dividir aluguel em BH.</p>
+        <div class="benefit"><div class="benefit-icon">🎓</div><div class="benefit-text"><h4>Ideal para estudantes</h4><p>Perfeito para quem veio estudar em BH e precisa de moradia de confiança.</p></div></div>
+        <div class="benefit"><div class="benefit-icon">💼</div><div class="benefit-text"><h4>E para profissionais</h4><p>Profissionais que querem dividir sem abrir mão da qualidade de vida.</p></div></div>
+        <div class="benefit"><div class="benefit-icon">🔒</div><div class="benefit-text"><h4>Seus dados protegidos</h4><p>Seus documentos são usados apenas para verificação e nunca compartilhados.</p></div></div>
+        <div class="wpp-card">
+          <p>💬 Prefere falar antes de se cadastrar?</p>
+          <a href="https://wa.me/5538999136306?text=Olá!%20Vi%20a%20DivideAi%20e%20gostaria%20de%20saber%20mais." target="_blank" class="wpp-btn">Chamar no WhatsApp →</a>
+        </div>
+      </div>
+      <div>
+        <form class="form-box" id="cadastroForm" onsubmit="handleSubmit(event)">
+          <h3>Criar meu perfil gratuito</h3>
+          <div class="frow">
+            <div class="fg"><label>Nome completo</label><input type="text" name="nome" placeholder="Seu nome" required></div>
+            <div class="fg"><label>Idade</label><input type="number" name="idade" placeholder="22" min="18" max="60" required></div>
+          </div>
+          <div class="frow">
+            <div class="fg"><label>E-mail</label><input type="email" name="email" placeholder="seu@email.com" required></div>
+            <div class="fg"><label>WhatsApp</label><input type="tel" name="whatsapp" placeholder="(38) 9 9991-3630" required></div>
+          </div>
+          <div class="fg"><label>CPF</label><input type="text" name="cpf" id="cpfInput" placeholder="000.000.000-00" maxlength="14" oninput="maskCPF(this)" required></div>
+          <div class="fg">
+            <label>Bairro de preferência em BH</label>
+            <select name="bairro" required>
+              <option value="">Selecione...</option>
+              <option>Savassi</option><option>Funcionários</option><option>Pampulha</option>
+              <option>Santa Efigênia</option><option>Lourdes</option><option>Buritis</option><option>Outro bairro</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label>Faixa de aluguel (sua parte)</label>
+            <select name="aluguel" required>
+              <option value="">Selecione...</option>
+              <option>Até R$ 600</option><option>R$ 600 – R$ 900</option>
+              <option>R$ 900 – R$ 1.200</option><option>Acima de R$ 1.200</option>
+            </select>
+          </div>
+          <div class="fg"><label>Sobre você</label><textarea name="sobre" placeholder="Ex: Sou estudante da FDC, acordo cedo, sou organizado(a), não fumo..."></textarea></div>
+          <div class="fg">
+            <label>Documento (RG ou CNH)</label>
+            <div class="upload-box" onclick="triggerUpload('docUp')">
+              <div class="icon">📄</div>
+              <p id="docLabel">Clique para enviar foto do seu documento</p>
+            </div>
+            <input type="file" id="docUp" name="documento" accept="image/*,application/pdf" style="display:none" onchange="updateLabel('docUp','docLabel')">
+          </div>
+          <div class="fg">
+            <label>Selfie segurando o documento</label>
+            <div class="upload-box" onclick="triggerUpload('selfieUp')">
+              <div class="icon">🤳</div>
+              <p id="selfieLabel">Clique para enviar sua selfie com o documento</p>
+            </div>
+            <input type="file" id="selfieUp" name="selfie" accept="image/*" style="display:none" onchange="updateLabel('selfieUp','selfieLabel')">
+          </div>
+          <button type="submit" class="btn-submit" id="submitBtn">Criar meu perfil e iniciar verificação 🔒</button>
+          <p class="priv">Dados protegidos · Verificação em até 24h · Score inicial: 30 pts</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img src="logo.png" class="footer-logo" alt="DivideAi">
+  <p>Plataforma de moradia compartilhada com segurança em Belo Horizonte</p>
+  <p style="margin-top:0.4rem">contato@divideai.com.br · (38) 9 9991-3630</p>
+</footer>
+
+<a href="https://wa.me/5538999136306?text=Olá!%20Tenho%20interesse%20na%20DivideAi%20e%20gostaria%20de%20saber%20mais." class="wpp-float" target="_blank" title="Falar no WhatsApp">💬</a>
+<div class="toast" id="toast"></div>
+
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modalContent"></div>
+</div>
+
+<script>
+const WPP='5538999136306';
+const FORMSPREE='https://formspree.io/f/xwvzvrrd';
+const profiles={
+  ana:{name:'Ana Lima',initials:'AN',cls:'av1',bg:'linear-gradient(135deg,#1DB88A,#0d6e55)',curso:'Direito · 22 anos',av:4.9,nAv:4,score:87,bairro:'Savassi',aluguel:'R$ 700–900',sobre:'Sou estudante de Direito, acordo cedo e gosto de casa organizada. Trabalho meio período e adoro cozinhar. Tenho um gato pequeno e sou muito tranquila.',sb:{cpf:20,doc:30,perfil:25,aval:12}},
+  carlos:{name:'Carlos Melo',initials:'CM',cls:'av2',bg:'linear-gradient(135deg,#534AB7,#3C3489)',curso:'Dev de Software · 25 anos',av:5,nAv:7,score:92,bairro:'Funcionários',aluguel:'R$ 800–1.100',sobre:'Trabalho remoto como desenvolvedor. Sou muito organizado, silencioso e respeito o espaço de todos. Vegano, gosto de academia e não recebo visitas frequentes.',sb:{cpf:20,doc:30,perfil:25,aval:17}},
+  julia:{name:'Júlia Santos',initials:'JS',cls:'av3',bg:'linear-gradient(135deg,#D85A30,#993C1D)',curso:'Nutrição · UFMG · 20 anos',av:4.0,nAv:2,score:74,bairro:'Pampulha',aluguel:'Até R$ 600',sobre:'Estudante da UFMG, amo cozinhar e sempre tem comida boa em casa! Sou sociável mas respeito o silêncio nos dias de prova. Não fumo.',sb:{cpf:20,doc:30,perfil:20,aval:4}}
+};
+function openModal(id){
+  const p=profiles[id];
+  const stars='★'.repeat(Math.round(p.av))+'☆'.repeat(5-Math.round(p.av));
+  const msg=`Oi%20${encodeURIComponent(p.name.split(' ')[0])}!%20Vi%20seu%20perfil%20na%20DivideAi%20e%20gostaria%20de%20conversar%20sobre%20dividir%20ap%C3%AA%20em%20BH.`;
+  document.getElementById('modalContent').innerHTML=`
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="m-avatar" style="background:${p.bg}">${p.initials}</div>
+    <h3 style="font-size:1.2rem;font-weight:800;letter-spacing:-0.02em">${p.name}</h3>
+    <p style="color:var(--muted);font-size:0.88rem;margin:0.2rem 0 0.75rem">${p.curso} · ${p.bairro} · ${p.aluguel}/mês</p>
+    <div style="display:inline-flex;align-items:center;gap:0.4rem;background:#E8FBF4;color:#0d6e55;padding:0.2rem 0.75rem;border-radius:100px;font-size:0.75rem;font-weight:700">✓ Identidade Verificada</div>
+    <div class="m-score">
+      <div style="display:flex;align-items:center;gap:1rem">
+        <div><div class="score-big">${p.score}</div><div class="score-desc">Score de Confiança / 100</div></div>
+        <div style="flex:1"><div class="score-bar" style="height:8px"><div class="score-fill" style="width:${p.score}%"></div></div></div>
+      </div>
+      <div class="sb">
+        <div class="sb-row"><span class="sb-l">CPF verificado</span><span class="sb-v">+${p.sb.cpf} pts</span></div>
+        <div class="sb-row"><span class="sb-l">Documento + Selfie</span><span class="sb-v">+${p.sb.doc} pts</span></div>
+        <div class="sb-row"><span class="sb-l">Perfil completo</span><span class="sb-v">+${p.sb.perfil} pts</span></div>
+        <div class="sb-row"><span class="sb-l">Avaliações recebidas</span><span class="sb-v">+${p.sb.aval} pts</span></div>
+      </div>
+    </div>
+    <div class="stars" style="color:#C8A84B">${stars} <span style="color:var(--muted);font-size:0.8rem">${p.av.toFixed(1)} · ${p.nAv} avaliações</span></div>
+    <p style="margin:1rem 0;font-size:0.88rem;color:var(--muted);line-height:1.65">${p.sobre}</p>
+    <div class="m-contact">
+      <a class="c-btn wpp" href="https://wa.me/${WPP}?text=${msg}" target="_blank">💬 Chamar no WhatsApp</a>
+      <button class="c-btn" onclick="showToast('Mensagem enviada! Respondemos em até 24h.')">📧 Enviar mensagem na plataforma</button>
+    </div>`;
+  document.getElementById('modalOverlay').classList.add('show');
+}
+function closeModal(e){if(!e||e.target===document.getElementById('modalOverlay'))document.getElementById('modalOverlay').classList.remove('show')}
+function goTo(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+function maskCPF(el){let v=el.value.replace(/\D/g,'');if(v.length>3)v=v.slice(0,3)+'.'+v.slice(3);if(v.length>7)v=v.slice(0,7)+'.'+v.slice(7);if(v.length>11)v=v.slice(0,11)+'-'+v.slice(11);el.value=v.slice(0,14)}
+function triggerUpload(id){document.getElementById(id).click()}
+function updateLabel(inputId,labelId){const f=document.getElementById(inputId).files[0];if(f)document.getElementById(labelId).textContent='✅ '+f.name}
+async function handleSubmit(e){
+  e.preventDefault();
+  const btn=document.getElementById('submitBtn');
+  btn.disabled=true;btn.textContent='Enviando...';
+  try{
+    const fd=new FormData(e.target);
+    const r=await fetch(FORMSPREE,{method:'POST',body:fd,headers:{Accept:'application/json'}});
+    if(r.ok){showToast('🎉 Cadastro enviado! Confirmação chegará em até 24h.');e.target.reset();document.getElementById('docLabel').textContent='Clique para enviar foto do seu documento';document.getElementById('selfieLabel').textContent='Clique para enviar sua selfie com o documento';}
+    else{showToast('Erro ao enviar. Tente novamente ou chame no WhatsApp.');}
+  }catch(err){showToast('Erro de conexão. Tente novamente.');}
+  btn.disabled=false;btn.textContent='Criar meu perfil e iniciar verificação 🔒';
+}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),4000)}
+</script>
+</body>
+</html>

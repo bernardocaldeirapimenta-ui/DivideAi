@@ -258,6 +258,7 @@ footer{background:var(--navy);color:#8DA0BA;padding:3rem 2.5rem}
     <li><a href="#seguranca">Segurança</a></li>
     <li><a href="#perfis">Colegas</a></li>
     <li><a href="#cadastro">Cadastrar</a></li>
+    <li><a href="#anunciar">Anunciar apto</a></li>
   </ul>
   <div class="nav-right">
     <a href="#perfis" class="btn-nav-ghost">Entrar</a>
@@ -726,6 +727,199 @@ footer{background:var(--navy);color:#8DA0BA;padding:3rem 2.5rem}
   </div>
 </section>
 
+<!-- ANUNCIAR APT -->
+<section id="anunciar" style="background:var(--bg)">
+  <div class="container">
+    <div class="form-grid">
+      <div class="form-info">
+        <div class="section-eyebrow">Para proprietários</div>
+        <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:1rem;letter-spacing:-0.02em">Anuncie seu apartamento <span style="color:var(--teal)">gratuitamente</span></h2>
+        <p style="color:var(--muted);font-size:0.92rem;line-height:1.7;margin-bottom:1.75rem">Conectamos seu imóvel com inquilinos verificados, com score de confiança e histórico de avaliações. Sem taxa, sem burocracia.</p>
+        <div class="benefit"><div class="benefit-icon">✅</div><div class="benefit-text"><h4>100% gratuito</h4><p>Nenhuma taxa para anunciar. Você só paga quando quiser impulsionar o anúncio no futuro.</p></div></div>
+        <div class="benefit"><div class="benefit-icon">🔒</div><div class="benefit-text"><h4>Inquilinos verificados</h4><p>Todos os interessados têm CPF e identidade verificados antes de entrar em contato.</p></div></div>
+        <div class="benefit"><div class="benefit-icon">⚡</div><div class="benefit-text"><h4>Publicação rápida</h4><p>Recebemos seu anúncio e publicamos no site em até 24h após a aprovação.</p></div></div>
+        <div class="benefit"><div class="benefit-icon">📊</div><div class="benefit-text"><h4>Score dos interessados</h4><p>Você vê o score de confiança de cada pessoa antes de decidir quem aceitar.</p></div></div>
+        <div class="wpp-card">
+          <p>💬 Prefere anunciar pelo WhatsApp?</p>
+          <a href="https://wa.me/5538999136306?text=Olá!%20Quero%20anunciar%20meu%20apartamento%20na%20DivideAi%20gratuitamente." target="_blank" class="wpp-btn">Falar no WhatsApp →</a>
+        </div>
+      </div>
+
+      <div>
+        <form class="form-box" id="anuncioForm" onsubmit="handleAnuncio(event)">
+          <h3>Cadastrar meu imóvel</h3>
+          <p class="form-sub">Preencha os dados do seu apartamento e entraremos em contato em até 24h.</p>
+
+          <div class="form-section-title">👤 Dados do proprietário</div>
+          <div class="frow">
+            <div class="fg"><label>Nome completo</label><input type="text" name="prop_nome" placeholder="Seu nome" required></div>
+            <div class="fg"><label>WhatsApp</label><input type="tel" name="prop_whatsapp" placeholder="(38) 9 9913-6306" required></div>
+          </div>
+          <div class="fg"><label>E-mail</label><input type="email" name="prop_email" placeholder="seu@email.com" required></div>
+          <div class="fg">
+            <label>Você é</label>
+            <select name="prop_tipo" required>
+              <option value="">Selecione...</option>
+              <option>Proprietário do imóvel</option>
+              <option>Inquilino atual buscando dividir</option>
+              <option>Imobiliária / corretor</option>
+            </select>
+          </div>
+
+          <div class="form-section-title">🏠 Dados do imóvel</div>
+          <div class="fg"><label>Endereço completo</label><input type="text" name="apt_endereco" placeholder="Rua, número — Bairro, BH" required></div>
+          <div class="frow">
+            <div class="fg">
+              <label>Bairro</label>
+              <select name="apt_bairro" required>
+                <option value="">Selecione...</option>
+                <optgroup label="Zona Sul">
+                  <option>Savassi</option><option>Funcionários</option><option>Lourdes</option>
+                  <option>Sion</option><option>Belvedere</option><option>Mangabeiras</option>
+                  <option>Santa Lúcia</option><option>Anchieta</option><option>Serra</option>
+                </optgroup>
+                <optgroup label="Zona Oeste">
+                  <option>Buritis</option><option>Estoril</option><option>Gutierrez</option>
+                  <option>Calafate</option><option>Gameleira</option>
+                </optgroup>
+                <optgroup label="Região Central">
+                  <option>Santa Efigênia</option><option>Centro</option><option>Floresta</option>
+                  <option>Santa Tereza</option><option>Barro Preto</option>
+                </optgroup>
+                <optgroup label="Pampulha / Norte">
+                  <option>Pampulha</option><option>Caiçara</option><option>Jardim América</option><option>Castelo</option>
+                </optgroup>
+                <option>Outro bairro</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label>Área total (m²)</label>
+              <input type="number" name="apt_area" placeholder="Ex: 75" min="10" required>
+            </div>
+          </div>
+          <div class="frow">
+            <div class="fg">
+              <label>Nº de quartos</label>
+              <select name="apt_quartos" required>
+                <option value="">Selecione...</option>
+                <option>1 quarto</option><option>2 quartos</option>
+                <option>3 quartos</option><option>4+ quartos</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label>Nº de banheiros</label>
+              <select name="apt_banheiros" required>
+                <option value="">Selecione...</option>
+                <option>1 banheiro</option><option>2 banheiros</option><option>3+ banheiros</option>
+              </select>
+            </div>
+          </div>
+          <div class="frow">
+            <div class="fg">
+              <label>Vagas de garagem</label>
+              <select name="apt_vagas">
+                <option value="">Selecione...</option>
+                <option>Sem garagem</option><option>1 vaga</option>
+                <option>2 vagas</option><option>3+ vagas</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label>Mobília</label>
+              <select name="apt_mobilia" required>
+                <option value="">Selecione...</option>
+                <option>Totalmente mobiliado</option>
+                <option>Semi-mobiliado</option>
+                <option>Sem mobília</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-section-title">💰 Valores</div>
+          <div class="frow">
+            <div class="fg">
+              <label>Aluguel por pessoa (R$)</label>
+              <div style="position:relative">
+                <span style="position:absolute;left:0.9rem;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:600;font-size:0.9rem">R$</span>
+                <input type="number" name="apt_aluguel" placeholder="Ex: 750" min="100" style="padding-left:2.5rem" required>
+              </div>
+            </div>
+            <div class="fg">
+              <label>Condomínio (R$)</label>
+              <div style="position:relative">
+                <span style="position:absolute;left:0.9rem;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:600;font-size:0.9rem">R$</span>
+                <input type="number" name="apt_condominio" placeholder="Ex: 400" min="0" style="padding-left:2.5rem">
+              </div>
+            </div>
+          </div>
+          <div class="fg">
+            <label>O que está incluso no valor?</label>
+            <div class="checkbox-group">
+              <label class="checkbox-item"><input type="checkbox" name="incluso" value="Água"><span>💧 Água</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="incluso" value="Luz"><span>⚡ Luz</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="incluso" value="Internet/Wi-Fi"><span>📶 Internet / Wi-Fi</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="incluso" value="Gás"><span>🔥 Gás</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="incluso" value="Condomínio"><span>🏢 Condomínio</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="incluso" value="IPTU"><span>📄 IPTU</span></label>
+            </div>
+          </div>
+
+          <div class="form-section-title">✨ Diferenciais e perfil desejado</div>
+          <div class="fg">
+            <label>Comodidades disponíveis</label>
+            <div class="checkbox-group">
+              <label class="checkbox-item"><input type="checkbox" name="comod" value="Academia"><span>🏋️ Academia no condomínio</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="comod" value="Piscina"><span>🏊 Piscina</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="comod" value="Portaria 24h"><span>🛡️ Portaria 24h</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="comod" value="Varanda"><span>🌿 Varanda / sacada</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="comod" value="Pet friendly"><span>🐾 Pet friendly</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="comod" value="Perto do metrô"><span>🚇 Perto do metrô</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="comod" value="Churrasqueira"><span>🍖 Churrasqueira</span></label>
+            </div>
+          </div>
+          <div class="fg">
+            <label>Perfil de inquilino desejado</label>
+            <select name="apt_perfil">
+              <option value="">Sem preferência</option>
+              <option>Só estudantes</option>
+              <option>Só profissionais</option>
+              <option>Estudantes ou profissionais</option>
+              <option>Só mulheres</option>
+              <option>Só homens</option>
+              <option>Casais</option>
+            </select>
+          </div>
+          <div class="fg"><label>Descrição do imóvel</label><textarea name="apt_descricao" placeholder="Descreva o apartamento, a vizinhança, o ambiente... Quanto mais detalhes, mais interessados você atrai!"></textarea></div>
+
+          <div class="fg">
+            <label>Fotos do imóvel (até 5 fotos)</label>
+            <div class="upload-box" onclick="triggerUpload('fotosApt')" style="padding:2rem">
+              <div class="upload-icon">📸</div>
+              <p id="fotosLabel">Clique para enviar fotos do apartamento</p>
+              <p style="font-size:0.75rem;color:var(--light);margin-top:0.3rem">Sala, quartos, cozinha, banheiro... Fotos reais atraem muito mais interessados!</p>
+            </div>
+            <input type="file" id="fotosApt" name="fotos" accept="image/*" multiple style="display:none" onchange="updateFotos()">
+          </div>
+          <div class="fg">
+            <label>Disponibilidade para entrada</label>
+            <select name="apt_disponibilidade">
+              <option value="">Selecione...</option>
+              <option>Imediata</option>
+              <option>Em até 1 mês</option>
+              <option>Em 2–3 meses</option>
+            </select>
+          </div>
+
+          <div style="background:#FFF8E8;border:1px solid #F5D97A;border-radius:var(--radius-sm);padding:1rem;margin-top:0.5rem;font-size:0.82rem;color:#7A5C00;line-height:1.6">
+            📸 <strong>Sobre as fotos:</strong> Após enviar o formulário, nossa equipe entrará em contato pelo WhatsApp para receber as fotos do imóvel. Você pode mandar quantas quiser diretamente pelo zap — sem limite de tamanho!
+          </div>
+          <button type="submit" class="btn-submit" id="anuncioBtn">Enviar meu anúncio gratuitamente 🏠</button>
+          <p class="priv">Entraremos em contato em até 24h · Publicação gratuita · Sem compromisso</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="footer-inner">
     <div>
@@ -863,6 +1057,13 @@ function closeApt(e){if(!e||e.target===document.getElementById('aptOverlay'))doc
 function goTo(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
 function maskCPF(el){let v=el.value.replace(/\D/g,'');if(v.length>3)v=v.slice(0,3)+'.'+v.slice(3);if(v.length>7)v=v.slice(0,7)+'.'+v.slice(7);if(v.length>11)v=v.slice(0,11)+'-'+v.slice(11);el.value=v.slice(0,14)}
 function triggerUpload(id){document.getElementById(id).click()}
+function updateFotos(){
+  const files=document.getElementById('fotosApt').files;
+  if(files.length>0){
+    const names=Array.from(files).map(f=>f.name).join(', ');
+    document.getElementById('fotosLabel').textContent=`✅ ${files.length} foto(s) selecionada(s): ${names.length>60?names.slice(0,60)+'...':names}`;
+  }
+}
 function updateLabel(inputId,labelId){const f=document.getElementById(inputId).files[0];if(f)document.getElementById(labelId).textContent='✅ '+f.name}
 async function handleSubmit(e){
   e.preventDefault();
@@ -879,6 +1080,20 @@ async function handleSubmit(e){
     }else{showToast('Erro ao enviar. Tente novamente ou chame no WhatsApp.');}
   }catch(err){showToast('Erro de conexão. Tente novamente.');}
   btn.disabled=false;btn.textContent='Criar meu perfil e iniciar verificação 🔒';
+}
+async function handleAnuncio(e){
+  e.preventDefault();
+  const btn=document.getElementById('anuncioBtn');
+  btn.disabled=true;btn.textContent='Enviando...';
+  try{
+    const fd=new FormData(e.target);
+    const r=await fetch(FORMSPREE,{method:'POST',body:fd,headers:{Accept:'application/json'}});
+    if(r.ok){
+      showToast('🏠 Anúncio enviado! Entraremos em contato em até 24h.');
+      e.target.reset();
+    }else{showToast('Erro ao enviar. Tente pelo WhatsApp!');}
+  }catch(err){showToast('Erro de conexão. Tente novamente.');}
+  btn.disabled=false;btn.textContent='Enviar meu anúncio gratuitamente 🏠';
 }
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),4000)}
 </script>
